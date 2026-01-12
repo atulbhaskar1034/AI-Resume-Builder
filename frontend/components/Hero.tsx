@@ -1,198 +1,131 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { FileText, Sparkles, ArrowRight, Upload, Brain, Network, BarChart } from 'lucide-react';
 
-const floatingElements = [
-	{ id: 1, x: '10%', y: '20%', delay: 0 },
-	{ id: 2, x: '80%', y: '15%', delay: 0.5 },
-	{ id: 3, x: '15%', y: '70%', delay: 1 },
-	{ id: 4, x: '85%', y: '65%', delay: 1.5 },
-	{ id: 5, x: '50%', y: '80%', delay: 2 },
+const workflowSteps = [
+	{
+		id: '01',
+		title: 'Upload Documents',
+		description: 'Upload resumes (PDF, DOCX) and job descriptions directly.',
+		icon: Upload,
+	},
+	{
+		id: '02',
+		title: 'Parse & Extract',
+		description: 'AI extracts key skills, experience, and educational background.',
+		icon: FileText,
+	},
+	{
+		id: '03',
+		title: 'Semantic Match',
+		description: 'Vector analysis compares your profile against job requirements.',
+		icon: Brain,
+	},
+	{
+		id: '04',
+		title: 'Strategic Insights',
+		description: 'Get actionable feedback and a personalized career roadmap.',
+		icon: BarChart,
+	},
 ];
 
 export default function Hero() {
 	return (
-		<section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-bg pt-20 md:pt-24">
-			<div className="absolute inset-0 overflow-hidden">
-				{floatingElements.map((element) => (
-					<motion.div
-						key={element.id}
-						className="absolute w-4 h-4 bg-primary-400 rounded-full opacity-20"
-						style={{ left: element.x, top: element.y }}
-						animate={{
-							y: [0, -20, 0],
-							scale: [1, 1.2, 1],
-							opacity: [0.2, 0.5, 0.2],
-						}}
-						transition={{
-							duration: 3,
-							repeat: Infinity,
-							delay: element.delay,
-							ease: 'easeInOut',
-						}}
-					/>
-				))}
+		<div className="relative overflow-hidden bg-slate-50 pt-16 pb-32 lg:pt-32 lg:pb-40">
+			{/* Background Decorative Elements */}
+			<div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+				<div className="absolute -top-24 -right-24 w-96 h-96 bg-llama-indigo-100 rounded-full blur-3xl opacity-50" />
+				<div className="absolute top-1/2 -left-24 w-72 h-72 bg-llama-teal-100 rounded-full blur-3xl opacity-50" />
 			</div>
 
-			<div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" />
-			<div className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float animation-delay-400" />
-
-			<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12 md:py-16">
+			<div className="relative max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
+				{/* Badge */}
 				<motion.div
-					initial={{ opacity: 0, y: 30 }}
+					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.8, ease: 'easeOut' }}
-					className="mb-6 md:mb-8"
+					transition={{ duration: 0.5 }}
+					className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 mb-8"
 				>
-					<motion.div
-						initial={{ scale: 0 }}
-						animate={{ scale: 1 }}
-						transition={{ delay: 0.2, duration: 0.5, type: 'spring' }}
-						className="inline-flex items-center px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-primary-200 text-primary-700 font-medium mb-6 md:mb-8"
-					>
-						<Sparkles className="w-4 h-4 mr-2" />
-						AI-Powered Resume Matching
-					</motion.div>
-
-					<h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
-						<motion.span
-							initial={{ opacity: 0, x: -50 }}
-							animate={{ opacity: 1, x: 0 }}
-							transition={{ delay: 0.4, duration: 0.8 }}
-						>
-							Find the
-						</motion.span>
-						<motion.span
-							initial={{ opacity: 0, scale: 0.5 }}
-							animate={{ opacity: 1, scale: 1 }}
-							transition={{ delay: 0.6, duration: 0.8 }}
-							className="gradient-text block"
-						>
-							Perfect Match
-						</motion.span>
-						<motion.span
-							initial={{ opacity: 0, x: 50 }}
-							animate={{ opacity: 1, x: 0 }}
-							transition={{ delay: 0.8, duration: 0.8 }}
-						>
-							Every Time
-						</motion.span>
-					</h1>
+					<Sparkles className="w-4 h-4 text-llama-indigo-600" />
+					<span className="text-sm font-medium text-llama-indigo-700">Next-Gen AI Resume Analysis</span>
 				</motion.div>
 
+				{/* Headline */}
+				<motion.h1
+					initial={{ opacity: 0, y: 20 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.5, delay: 0.1 }}
+					className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6"
+				>
+					Semantic Resume Intelligence, <br className="hidden md:block" />
+					<span className="text-transparent bg-clip-text bg-gradient-to-r from-llama-indigo-600 to-llama-purple-600">
+						Powered by AI
+					</span>
+				</motion.h1>
+
+				{/* Subheadline */}
 				<motion.p
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 1, duration: 0.8 }}
-					className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-8 md:mb-12 max-w-4xl mx-auto leading-relaxed px-4"
+					transition={{ duration: 0.5, delay: 0.2 }}
+					className="text-lg md:text-xl text-slate-600 max-w-2xl mb-10 leading-relaxed"
 				>
-					Leverage AI-powered resume analysis to make smarter hiring decisions.
-					Get detailed compatibility scores, skill matching, and actionable insights
-					for every candidate.
+					Stop relying on keyword matching. Our advanced LLM-powered engine understands the
+					<i>context</i> of your experience to find your perfect career fit.
 				</motion.p>
 
+				{/* CTA Buttons */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 1.2, duration: 0.8 }}
-					className="flex items-center justify-center px-4"
+					transition={{ duration: 0.5, delay: 0.3 }}
+					className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-24"
 				>
-					<Link href="/analyze" className="relative group">
-						<motion.div
-							whileHover={{ scale: 1.05 }}
-							whileTap={{ scale: 0.95 }}
-							className="btn-primary text-lg px-8 md:px-12 py-4 md:py-5 group relative overflow-hidden"
-						>
-							<motion.div
-								className="absolute inset-0 bg-gradient-to-r from-primary-600 via-purple-600 to-primary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-								animate={{
-									backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-								}}
-								transition={{
-									duration: 2,
-									repeat: Infinity,
-									ease: 'linear',
-								}}
-								style={{
-									backgroundSize: '200% 100%',
-								}}
-							/>
-
-							<span className="relative flex items-center justify-center">
-								<motion.span
-									className="mr-3"
-									animate={{
-										scale: [1, 1.1, 1],
-									}}
-									transition={{
-										duration: 2,
-										repeat: Infinity,
-										ease: 'easeInOut',
-									}}
-								>
-									✨
-								</motion.span>
-								Start Analyzing Now
-								<motion.div
-									className="ml-3"
-									animate={{
-										x: [0, 5, 0],
-									}}
-									transition={{
-										duration: 1.5,
-										repeat: Infinity,
-										ease: 'easeInOut',
-									}}
-								>
-									<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-								</motion.div>
-							</span>
-
-							<motion.div
-								className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12"
-								animate={{
-									x: ['-100%', '100%'],
-								}}
-								transition={{
-									duration: 3,
-									repeat: Infinity,
-									ease: 'easeInOut',
-									repeatDelay: 2,
-								}}
-							/>
-						</motion.div>
+					<Link
+						href="/analyze"
+						className="btn-primary w-full sm:w-auto h-12 px-8 text-base shadow-lg shadow-indigo-500/20"
+					>
+						Analyze Resume
+						<ArrowRight className="ml-2 w-4 h-4" />
+					</Link>
+					<Link
+						href="/about"
+						className="btn-secondary w-full sm:w-auto h-12 px-8 text-base"
+					>
+						How it works
 					</Link>
 				</motion.div>
 
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 1.4, duration: 0.8 }}
-					className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto px-4"
-				>
-					{[
-						{ value: 'AI-Powered', label: 'Text Analysis' },
-						{ value: 'Multi-Format', label: 'File Support' },
-						{ value: 'Open Source', label: 'Application' },
-					].map((stat, index) => (
-						<motion.div
-							key={stat.label}
-							initial={{ opacity: 0, scale: 0.8 }}
-							animate={{ opacity: 1, scale: 1 }}
-							transition={{ delay: 1.6 + index * 0.1, duration: 0.5 }}
-							className="glass-effect rounded-2xl p-4 md:p-6"
-						>
-							<div className="text-lg md:text-xl font-bold text-primary-600 mb-2">
-								{stat.value}
-							</div>
-							<div className="text-gray-600 font-medium text-sm md:text-base">
-								{stat.label}
-							</div>
-						</motion.div>
-					))}
-				</motion.div>
+				{/* Visual Workflow Cards */}
+				<div className="w-full max-w-6xl mx-auto">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+						{workflowSteps.map((step, index) => (
+							<motion.div
+								key={step.id}
+								initial={{ opacity: 0, y: 40 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.6, delay: 0.4 + (index * 0.1) }}
+								className="bg-white rounded-xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 relative group hover:-translate-y-1 transition-transform duration-300"
+							>
+								<div className="absolute top-6 left-6 text-xs font-bold text-slate-300 tracking-widest">
+									{step.id}
+								</div>
+								<div className="mt-8 mb-6 flex justify-center">
+									{/* Icon Container */}
+									<div className="w-16 h-16 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center group-hover:bg-indigo-50 group-hover:border-indigo-100 transition-colors duration-300">
+										<step.icon className="w-8 h-8 text-slate-400 group-hover:text-llama-indigo-600 transition-colors duration-300" />
+									</div>
+								</div>
+								<h3 className="text-lg font-bold text-slate-900 mb-3">{step.title}</h3>
+								<p className="text-sm text-slate-500 leading-relaxed">
+									{step.description}
+								</p>
+							</motion.div>
+						))}
+					</div>
+				</div>
 			</div>
-		</section>
+		</div>
 	);
 }

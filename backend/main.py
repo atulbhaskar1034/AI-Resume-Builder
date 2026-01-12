@@ -2,11 +2,19 @@ from fastapi import FastAPI, File, UploadFile, Form, HTTPException, BackgroundTa
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from dotenv import load_dotenv
+import os
+
+# Explicitly load .env from the same directory as main.py
+dotenv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+load_dotenv(dotenv_path)
+
 import asyncio
 import aiofiles
 import os
 import shutil
 import logging
+import json
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 import uuid
@@ -14,6 +22,8 @@ import uuid
 from text_extractor import TextExtractor
 from text_preprocessor import TextPreprocessor
 from similarity_engine import SimilarityEngine
+from gap_analysis import GapAnalyzer
+from recommender import CourseRecommender
 
 
 logging.basicConfig(
@@ -66,19 +76,92 @@ os.makedirs("results", exist_ok=True)
 text_extractor = TextExtractor()
 text_preprocessor = TextPreprocessor()
 similarity_engine = SimilarityEngine()
+market_trends_path = os.path.join(os.path.dirname(__file__), 'data', 'market_trends.json')
+gap_analyzer = GapAnalyzer(market_data_path=market_trends_path)
+
+courses_path = os.path.join(os.path.dirname(__file__), 'data', 'nptel_courses.json')
+recommender = CourseRecommender(courses_data_path=courses_path)
+
 
 
 analysis_results = {}
 
+market_jobs = []
+
+@app.on_event("startup")
+async def load_market_data():
+    global market_data, market_jobs
+    try:
+        # Load trends
+        trends_path = os.path.join(os.path.dirname(__file__), 'data', 'market_trends.json')
+        if os.path.exists(trends_path):
+            async with aiofiles.open(trends_path, 'r') as f:
+                content = await f.read()
+                market_data = json.loads(content)
+            logger.info("Loaded market trends data")
+        
+        # Load jobs
+        jobs_path = os.path.join(os.path.dirname(__file__), 'data', 'market_jobs.json')
+        if os.path.exists(jobs_path):
+             async with aiofiles.open(jobs_path, 'r') as f:
+                content = await f.read()
+                market_jobs = json.loads(content)
+             logger.info(f"Loaded {len(market_jobs)} market jobs")
+        else:
+            logger.warning("market_jobs.json not found")
+
+    except Exception as e:
+        logger.error(f"Failed to load market data: {str(e)}")
+
+@app.get("/api/market-trends")
+async def get_market_trends():
+    return JSONResponse(content=market_data)
+
+
+
+# Helper to find matching jobs
+def find_matching_jobs(resume_data, jobs):
+    matches = []
+    # Limit to top 20 to avoid performance hit if list grows
+    # But since we only have ~50, checking all is fine.
+    # We'll check first 30 for speed.
+    for job in jobs[:30]: 
+        try:
+            # Construct job data for similarity engine
+            # Combine title + description + tags
+            job_text = f"{job['position']} {job['description']} {' '.join(job.get('tags', []))}"
+            
+            job_data_for_sim = {
+                'text': job_text,
+                'cleaned_text': job_text
+            }
+            
+            # Use similarity engine
+            # Note: this fits TF-IDF every time, which is imperfect but works for small batch
+            score_result = similarity_engine.calculate_similarity(resume_data, job_data_for_sim)
+            overall_score = score_result.get('overall_score', 0)
+            
+            if overall_score > 40: # Only relevant matches
+                matches.append({
+                    **job,
+                    'match_score': overall_score
+                })
+        except Exception:
+            continue
+            
+    # Sort by score descending
+    matches.sort(key=lambda x: x['match_score'], reverse=True)
+    return matches[:3]
 
 class ResuMatchAnalyzer:
-
     def __init__(self):
         self.extractor = text_extractor
         self.preprocessor = text_preprocessor
         self.similarity_engine = similarity_engine
+        self.gap_analyzer = gap_analyzer
+        self.recommender = recommender
 
-    async def analyze_match(self, resume_file: UploadFile, job_description: str) -> Dict[str, Any]:
+    async def analyze_match(self, resume_file: UploadFile, job_description: Optional[str] = None, matching_jobs: List[Dict] = []) -> Dict[str, Any]:
         try:
             analysis_id = str(uuid.uuid4())
 
@@ -102,49 +185,151 @@ class ResuMatchAnalyzer:
             resume_processed = self.preprocessor.preprocess_text(resume_text)
             job_processed = self.preprocessor.preprocess_text(job_description)
 
-            logger.info("Extracting features...")
-            resume_features = self.preprocessor.get_feature_vector(resume_processed)
-            job_features = self.preprocessor.get_feature_vector(job_processed)
+            logger.info("Starting resume analysis...")
+            logger.info(f"DEBUG: Analyzing resume file: {resume_file.filename}")
+            
+            # Prepare data dictionaries as expected by SimilarityEngine
+            resume_data_for_analysis = extraction_result
+            
+            job_data_for_analysis = {
+                'text': job_description,
+                'cleaned_text': job_processed['cleaned_text'],
+                'keywords': job_processed.get('skills', {})
+            }
 
             logger.info("Calculating similarity...")
             similarity_result = self.similarity_engine.calculate_similarity(
-                resume_features,
-                job_features
+                resume_data_for_analysis,
+                job_data_for_analysis
             )
 
-            analysis_result = {
-                'analysis_id': analysis_id,
-                'timestamp': datetime.now().isoformat(),
-                'resume_file': resume_file.filename,
-                'extraction_info': {
-                    'file_type': extraction_result['file_type'],
-                    'extraction_method': extraction_result['extraction_method'],
-                    'metadata': extraction_result.get('metadata', {})
-                },
-                'resume_analysis': {
-                    'statistics': resume_processed.get('statistics', {}),
-                    'entities': resume_processed.get('entities', {}),
-                    'skills': resume_processed.get('skills', {}),
-                    'sections': resume_processed.get('sections', {}),
-                    'features': resume_features
-                },
-                'job_analysis': {
-                    'statistics': job_processed.get('statistics', {}),
-                    'entities': job_processed.get('entities', {}),
-                    'skills': job_processed.get('skills', {}),
-                    'sections': job_processed.get('sections', {}),
-                    'features': job_features
-                },
-                'similarity_analysis': similarity_result,
-                'quality_scores': {
-                    'resume_quality': self.preprocessor._calculate_text_quality_score(
-                        resume_text, resume_processed
-                    ),
-                    'job_quality': self.preprocessor._calculate_text_quality_score(
-                        job_description, job_processed
-                    )
+            # Step 2: Role Detection
+            detected_role = self.preprocessor.detect_role(resume_text)
+            logger.info(f"Detected role: {detected_role}")
+
+            # Step 3: Hybrid Skill Gap Analysis
+            # Scenario A: JD Provided -> Use JD skills as target + Bonus Cross-Reference
+            # Scenario B: No JD -> Use Role Standard + Market Trends as target
+            
+            logger.info("Performing skill gap analysis...")
+            missing_skills = []
+            final_match_score = 0
+            
+            market_insights = [] # Hidden gaps from market comparison (Bonus)
+            
+            if job_description and job_description.strip():
+                # --- SCENARIO A: JD Provided ---
+                # Use Similarity Engine for base match against JD
+                final_match_score = int(similarity_result.get('overall_score', 0))
+                
+                # Extract JD skills for gap analysis
+                jd_skills_keywords = job_processed.get('skills', {}).keys()
+                # Create a pseudo-market structure for gap analyzer
+                jd_target_skills = [{"keyword": k, "count": 100} for k in jd_skills_keywords] # High count implies required
+                
+                # Find gaps against JD
+                missing_skills = self.gap_analyzer.find_skill_gaps(resume_text, matched_role=detected_role, target_skills_override=jd_target_skills)
+                
+                # --- Bonus: Cross-Reference (Hidden Market Gaps) ---
+                # Compare against Role Standard to find what's missing for the *role* generally, even if JD didn't ask
+                role_standard_keywords = self.preprocessor.role_keywords.get(detected_role, [])
+                role_target_skills = [{"keyword": k, "count": 50} for k in role_standard_keywords]
+                
+                # We find gaps against role standard
+                role_gaps = self.gap_analyzer.find_skill_gaps(resume_text, matched_role=detected_role, target_skills_override=role_target_skills)
+                
+                # Filter role gaps: include only if NOT in missing_skills (to avoid duplicates) and NOT in resume
+                current_gap_names = {g['skill'] for g in missing_skills}
+                for gap in role_gaps:
+                    if gap['skill'] not in current_gap_names:
+                        market_insights.append(gap)
+                        
+            else:
+                # --- SCENARIO B: No JD (Market Mode) ---
+                logger.info(f"No JD provided. Analyzing against market standards for {detected_role}...")
+                
+                # Use Role Standard keywords + Top General Market keywords
+                role_standard_keywords = self.preprocessor.role_keywords.get(detected_role, [])
+                
+                # Combine Role keywords with top general market trends
+                # Create target list
+                targets = []
+                for k in role_standard_keywords:
+                    targets.append({"keyword": k, "count": 100}) # Role Core Skills
+                
+                # Add top 10 general market skills that aren't already in role keywords
+                for mk in self.gap_analyzer.market_skills[:10]:
+                    if mk['keyword'] not in role_standard_keywords:
+                        targets.append(mk)
+                        
+                # Find gaps against this Market Standard
+                missing_skills = self.gap_analyzer.find_skill_gaps(resume_text, matched_role=detected_role, target_skills_override=targets)
+                
+                # Calculate a "Market Match Score" roughly based on missing skills count
+                # Start with 100. Deduct for each missing core skill.
+                # This is a heuristic since we don't have a similarity score against a text.
+                base_score = 100
+                deduction = len(missing_skills) * 5
+                final_match_score = max(20, base_score - deduction) # Floor at 20
+
+            # Step 4: Course Recommendations
+            logger.info("Generating learning roadmap...")
+            career_roadmap = self.recommender.generate_roadmap(missing_skills)
+            
+            # Matched Skills for Heatmap
+            matched_skills_list = []
+            if 'matched_skills' in similarity_result:
+                matched_skills_list = similarity_result['matched_skills']
+            
+            # Construct Heatmap Data
+            heatmap_data = []
+            for skill in matched_skills_list:
+                heatmap_data.append({"skill": skill, "status": "match", "score": 90}) # Dummy high score for match
+            
+            for gap in missing_skills:
+                # SkillGap object has: skill, importance, gap_type
+                score = 0
+                if gap['gap_type'] == 'Critical':
+                    score = 20
+                else:
+                    score = 40
+                heatmap_data.append({"skill": gap['skill'], "status": "gap", "score": score})
+
+
+            # Market Job Matching
+            matched_jobs = []
+            if matching_jobs:
+                logger.info(f"Matching against {len(matching_jobs)} market jobs...")
+                matched_jobs = find_matching_jobs(resume_data_for_analysis, matching_jobs)
+                logger.info(f"Found {len(matched_jobs)} matching market jobs")
+
+            # Final Specific Response Structure
+            response_payload = {
+                "status": "success",
+                "role_detected": detected_role,
+                "role_detected": detected_role,
+                "match_score": final_match_score,
+                "market_insights": market_insights, # Bonus field
+                "heatmap_data": heatmap_data,
+                "roadmap": career_roadmap,
+                
+                # Keeping legacy fields for now to prevent breaking existing frontend totally before refactor
+                "analysis_id": analysis_id,
+                "timestamp": datetime.now().isoformat(),
+                "matched_jobs": matched_jobs,
+                "detailed_analysis": { # Helper for frontend standard display
+                     "strengths": matched_skills_list,
+                     "areas_for_improvement": [g['skill'] for g in missing_skills],
+                     "areas_for_improvement": [g['skill'] for g in missing_skills],
+                     "overall_assessment": f"Role: {detected_role}. Match Score: {final_match_score}%"
                 }
+
             }
+            
+            analysis_results[analysis_id] = response_payload
+
+            logger.info(f"Analysis completed successfully. ID: {analysis_id}")
+            return response_payload
 
             analysis_results[analysis_id] = analysis_result
 
@@ -155,24 +340,19 @@ class ResuMatchAnalyzer:
             logger.error(f"Analysis failed: {str(e)}")
             raise HTTPException(status_code=500, detail=str(e))
 
-
 analyzer = ResuMatchAnalyzer()
-
-
-@app.get("/")
-async def home():
-    return {"message": "ResuMatch API", "status": "active"}
 
 
 @app.post("/analyze")
 async def analyze_resume_job_match(
     background_tasks: BackgroundTasks,
     resume: UploadFile = File(...),
-    job_description: str = Form(...)
+    job_description: Optional[str] = Form(None)
 ):
     try:
-        if not job_description.strip():
-            raise HTTPException(status_code=400, detail="Job description cannot be empty")
+        # Job Description is now optional. If empty/None, treated as Market Mode.
+        # if not job_description.strip():
+        #     raise HTTPException(status_code=400, detail="Job description cannot be empty")
         allowed_types = {'.pdf', '.doc', '.docx', '.txt'}
         file_ext = os.path.splitext(resume.filename)[1].lower()
         if file_ext not in allowed_types:
@@ -180,12 +360,20 @@ async def analyze_resume_job_match(
                 status_code=400, 
                 detail=f"Unsupported file type: {file_ext}. Allowed types: {', '.join(allowed_types)}"
             )
-        result = await analyzer.analyze_match(resume, job_description)
-        return JSONResponse(content={
-            'analysis_id': result['analysis_id'],
-            'similarity_analysis': result['similarity_analysis'],
-            'timestamp': result['timestamp']
-        })
+            
+        # Perform main analysis
+        if file_ext not in allowed_types:
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Unsupported file type: {file_ext}. Allowed types: {', '.join(allowed_types)}"
+            )
+            
+        # Perform main analysis
+        # Pass the global market_jobs list
+        result = await analyzer.analyze_match(resume, job_description, matching_jobs=market_jobs)
+        
+        # Return the simplified structure directly
+        return JSONResponse(content=result)
     except HTTPException:
         raise
     except Exception as e:
@@ -196,7 +384,7 @@ async def analyze_resume_job_match(
 async def analyse_resume_job_match(
     background_tasks: BackgroundTasks,
     resume: UploadFile = File(...),
-    job_description: str = Form(...)
+    job_description: Optional[str] = Form(None)
 ):
     return await analyze_resume_job_match(background_tasks, resume, job_description)
 
@@ -230,7 +418,7 @@ async def health_check():
 @app.post("/batch-analyze")
 async def batch_analyze(
     resumes: List[UploadFile] = File(...),
-    job_description: str = Form(...)
+    job_description: Optional[str] = Form(None)
 ):
     try:
         if len(resumes) > 10:

@@ -5,49 +5,44 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900;
-  }
-  
-  /* Ensure proper spacing for fixed header */
-  .page-content {
-    @apply pt-20 md:pt-24;
+    @apply bg-slate-50 text-slate-800 antialiased;
   }
 }
 
 @layer components {
+  /* Minimal Button Styles */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 transform hover:scale-105;
+    @apply inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm text-white bg-llama-indigo-600 hover:bg-llama-indigo-700 focus:ring-2 focus:ring-llama-indigo-500 focus:ring-offset-2;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200;
+    @apply inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300;
   }
   
-  .card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl;
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-llama-teal-500/20 text-white bg-gradient-to-r from-llama-teal-500 to-llama-teal-600 hover:from-llama-teal-400 hover:to-llama-teal-500;
+  }
+
+  /* LlamaIndex Style Cards */
+  .glass-card {
+    @apply bg-white rounded-xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-200/40 transition-all duration-300;
   }
   
-  .card-gradient {
-    @apply bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl;
+  .feature-card {
+    @apply p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group;
+  }
+
+  /* Utility Text Gradients */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-llama-indigo-600 to-llama-purple-600;
   }
   
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent;
-  }
-  
-  .gradient-bg {
-    @apply bg-gradient-to-br from-primary-50 via-white to-purple-50;
-  }
-  
-  .gradient-border {
-    @apply bg-gradient-to-r from-primary-500 to-purple-500 p-[1px] rounded-lg;
-  }
-  
-  .glass-effect {
-    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+  .text-gradient-teal {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-llama-teal-600 to-llama-indigo-600;
   }
 }
 
@@ -55,12 +50,13 @@
   .animation-delay-200 {
     animation-delay: 200ms;
   }
-  
   .animation-delay-400 {
     animation-delay: 400ms;
   }
-  
   .animation-delay-600 {
     animation-delay: 600ms;
+  }
+  .backdrop-blur-xs {
+    backdrop-filter: blur(2px);
   }
 }

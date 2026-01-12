@@ -68,8 +68,12 @@ class SimilarityEngine:
                 weight = self.weights.get(component, 0)
                 overall_score += score * weight
                 
-            boosted_score = overall_score ** 0.75
-            final_score = min(100.0, boosted_score * 100 * 1.15)
+            # Apply boosting only if base score is meaningful (> 5%)
+            if overall_score < 0.05:
+                final_score = overall_score * 100
+            else:
+                boosted_score = overall_score ** 0.75
+                final_score = min(100.0, boosted_score * 100 * 1.15)
             
             result['overall_score'] = round(final_score, 2)
             result['detailed_analysis'] = self._generate_analysis(result)
@@ -153,7 +157,9 @@ class SimilarityEngine:
             job_experience = self._extract_experience_years(job_data)
             
             if job_experience == 0:
-                return 1.0
+                # User requested strict scoring: if no experience requirement matches, return 0.0 
+                # (unless we want to be nice, but strict 'garbage in garbage out' implies 0)
+                return 0.0
             
             if resume_experience >= job_experience:
                 return 1.0
@@ -179,6 +185,11 @@ class SimilarityEngine:
             
             resume_level = education_hierarchy.get(resume_education.lower(), 1)
             job_level = education_hierarchy.get(job_education.lower(), 1)
+            
+            # If job requires nothing ('none' -> 1), and user requested stricter validation:
+            # If job_level is 1 (none), it means no education requirement was extracted.
+            if job_level == 1:
+                return 0.0
             
             if resume_level >= job_level:
                 return 1.0
@@ -240,7 +251,10 @@ class SimilarityEngine:
             # Extract from predefined skill categories
             for category, skill_list in self.skill_categories.items():
                 for skill in skill_list:
-                    if skill.lower() in text:
+                    # Use regex with word boundaries to avoid partial matches (e.g., 'r' in 'random')
+                    # Escape the skill to handle special characters like C++ or C#
+                    pattern = r'\b' + re.escape(skill.lower()) + r'\b'
+                    if re.search(pattern, text):
                         skills.append(skill)
             
             # Extract from structured data if available
@@ -297,11 +311,23 @@ class SimilarityEngine:
             return 'none'
         except Exception:
             return 'none'
+            
+    def _generate_overall_assessment(self, result: Dict[str, Any]) -> str:
+        score = result.get('overall_score', 0)
+        if score >= 80:
+            return "Excellent match! Your profile strongly aligns with the job requirements."
+        elif score >= 60:
+            return "Good match. You have many of the required skills, but there are some gaps to address."
+        elif score >= 40:
+            return "Moderate match. While you have some relevant skills, significant experience or skill gaps exist."
+        else:
+            return "Low match. Your profile differs significantly from the job requirements."
     
     def _generate_analysis(self, result: Dict[str, Any]) -> Dict[str, Any]:
         return {
+            'overall_assessment': self._generate_overall_assessment(result),
             'strengths': self._identify_strengths(result),
-            'weaknesses': self._identify_weaknesses(result),
+            'areas_for_improvement': self._identify_weaknesses(result),
             'score_breakdown': result['component_scores']
         }
     

@@ -39,19 +39,48 @@ export interface AnalysisRequest {
   job_description: string;
 }
 
+export interface SkillGap {
+  skill: string;
+  importance: number;
+  gap_type: string;
+}
+
+export interface HeatmapItem {
+  skill: string;
+  status: 'match' | 'gap';
+  score: number;
+}
+
+export interface LearningNode {
+  month: number;
+  skill: string;
+  course_title: string;
+  course_url: string;
+  thumbnail: string;
+  description: string;
+  status: string;
+}
+
+export interface MatchedJob {
+  id: string;
+  position: string;
+  company: string;
+  location: string;
+  url: string;
+  date: string;
+  match_score: number;
+}
+
 export interface AnalysisResult {
-  overall_score: number;
-  component_scores: {
-    semantic_similarity: number;
-    skill_match: number;
-    experience_match: number;
-    education_match: number;
-    keyword_match: number;
-  };
-  matched_skills: string[];
-  missing_skills: string[];
-  recommendations: string[];
-  detailed_analysis: {
+  status: string;
+  role_detected: string;
+  match_score: number;
+  heatmap_data: HeatmapItem[];
+  roadmap: LearningNode[];
+  matched_jobs: MatchedJob[];
+
+  // Optional legacy fields for backward compat or helper access
+  detailed_analysis?: {
     overall_assessment: string;
     strengths: string[];
     areas_for_improvement: string[];
@@ -81,8 +110,7 @@ export const analyzeResume = async (
     },
   });
 
-  const { similarity_analysis } = response.data;
-  return similarity_analysis;
+  return response.data;
 };
 
 export const analyzeBatchResumes = async (

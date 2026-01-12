@@ -112,7 +112,15 @@ class TextPreprocessor:
             self.compiled_education_patterns[category] = [re.compile(pattern, re.IGNORECASE) for pattern in patterns]
         
         self.compiled_job_patterns = [re.compile(pattern, re.IGNORECASE) for pattern in self.job_title_patterns]
-    
+        
+        # Define keyword sets for each role (Moved from detect_role to allow external access)
+        self.role_keywords = {
+            'Frontend Developer': ['frontend', 'react', 'angular', 'vue', 'html', 'css', 'javascript', 'typescript', 'ui/ux', 'web design'],
+            'Backend Engineer': ['backend', 'api', 'database', 'sql', 'nosql', 'server', 'java', 'python', 'golang', 'microservices'],
+            'Data Scientist': ['data science', 'machine learning', 'deep learning', 'pandas', 'numpy', 'pytorch', 'tensorflow', 'statistics', 'analysis'],
+            'DevOps Engineer': ['devops', 'ci/cd', 'docker', 'kubernetes', 'aws', 'cloud', 'jenkins', 'terraform', 'monitoring'],
+        }
+
     def preprocess_text(self, text: str, options: Dict[str, bool] = None) -> Dict[str, Any]:
         if options is None:
             options = {
@@ -435,6 +443,28 @@ class TextPreprocessor:
             job_titles.extend(matches)
         
         return list(set(job_titles))
+    
+    def detect_role(self, text: str) -> str:
+        """
+        Determine the primary role based on keyword frequency analysis.
+        Returns one of: 'Frontend Developer', 'Backend Engineer', 'Data Scientist', 'DevOps Engineer', or 'General Software Engineer'
+        """
+        text = text.lower()
+        
+        scores = {role: 0 for role in self.role_keywords}
+        
+        for role, keywords in self.role_keywords.items():
+            for keyword in keywords:
+                scores[role] += text.count(keyword)
+        
+        # Find the role with the highest score
+        best_role = max(scores, key=scores.get)
+        
+        # If no significant keywords found (all zeros or very low), default fallback
+        if scores[best_role] == 0:
+            return 'General Software Engineer'
+            
+        return best_role
     
     def _calculate_text_quality_score(self, text: str, processed_data: Dict[str, Any]) -> Dict[str, float]:
         """Calculate quality metrics for the text"""

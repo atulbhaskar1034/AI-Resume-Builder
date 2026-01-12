@@ -1,16 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  CheckCircle, 
-  XCircle, 
-  TrendingUp, 
-  User, 
-  GraduationCap, 
-  Briefcase, 
+import {
+  CheckCircle,
+  XCircle,
+  TrendingUp,
+  User,
+  GraduationCap,
+  Briefcase,
   Code,
   Target,
-  Lightbulb
+  Lightbulb,
+  ExternalLink,
+  MapPin,
+  Calendar
 } from 'lucide-react';
+
+interface MatchedJob {
+  id: string;
+  position: string;
+  company: string;
+  location: string;
+  url: string;
+  date: string;
+  match_score: number;
+}
 
 interface AnalysisResult {
   overall_score: number;
@@ -27,8 +40,10 @@ interface AnalysisResult {
   detailed_analysis: {
     overall_assessment: string;
     strengths: string[];
+    weaknesses: string[];
     areas_for_improvement: string[];
   };
+  matched_jobs?: MatchedJob[];
 }
 
 interface AnalysisResultsProps {
@@ -96,7 +111,7 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
     >
       <motion.div variants={itemVariants} className="card p-8 text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Match Analysis Results</h2>
-        
+
         <div className="relative inline-flex items-center justify-center">
           <svg className="w-32 h-32 transform -rotate-90">
             <circle
@@ -133,19 +148,19 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
             </div>
           </div>
         </div>
-        
+
         <p className="text-lg text-gray-600 mt-6">{result.detailed_analysis?.overall_assessment || 'No assessment available'}</p>
       </motion.div>
 
       <motion.div variants={itemVariants} className="card p-6">
         <h3 className="text-xl font-semibold text-gray-900 mb-6">Detailed Analysis</h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.entries(result.component_scores || {}).map(([key, score]) => {
             const Icon = componentIcons[key as keyof typeof componentIcons];
             const name = componentNames[key as keyof typeof componentNames];
             const percentage = Math.round((score || 0) * 100);
-            
+
             return (
               <motion.div
                 key={key}
@@ -163,16 +178,15 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
                     {percentage}%
                   </span>
                 </div>
-                
+
                 <div className="w-full bg-gray-200 rounded-full h-2">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${percentage}%` }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className={`h-2 rounded-full ${
-                      percentage >= 75 ? 'bg-green-500' : 
+                    className={`h-2 rounded-full ${percentage >= 75 ? 'bg-green-500' :
                       percentage >= 60 ? 'bg-yellow-500' : 'bg-red-500'
-                    }`}
+                      }`}
                   />
                 </div>
               </motion.div>
@@ -191,7 +205,7 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
               Matched Skills ({(result.matched_skills || []).length})
             </h3>
           </div>
-          
+
           <div className="space-y-2 max-h-64 overflow-y-auto">
             {(result.matched_skills || []).slice(0, 20).map((skill, index) => (
               <motion.div
@@ -222,7 +236,7 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
               Missing Skills ({(result.missing_skills || []).length})
             </h3>
           </div>
-          
+
           <div className="space-y-2 max-h-64 overflow-y-auto">
             {(result.missing_skills || []).slice(0, 20).map((skill, index) => (
               <motion.div
@@ -253,7 +267,7 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
             </div>
             <h3 className="text-xl font-semibold text-gray-900">Recommendations</h3>
           </div>
-          
+
           <div className="space-y-4">
             {(result.recommendations || []).map((recommendation, index) => (
               <motion.div
@@ -282,7 +296,7 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
               </div>
               <h3 className="text-xl font-semibold text-gray-900">Strengths</h3>
             </div>
-            
+
             <div className="space-y-3">
               {(result.detailed_analysis?.strengths || []).map((strength, index) => (
                 <motion.div
@@ -308,7 +322,7 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
               </div>
               <h3 className="text-xl font-semibold text-gray-900">Areas for Improvement</h3>
             </div>
-            
+
             <div className="space-y-3">
               {(result.detailed_analysis?.areas_for_improvement || []).map((area, index) => (
                 <motion.div
@@ -326,6 +340,66 @@ export default function AnalysisResults({ result, className = '' }: AnalysisResu
           </motion.div>
         )}
       </div>
+
+      {(result.matched_jobs || []).length > 0 && (
+        <motion.div variants={itemVariants} className="card p-6 border-2 border-primary-100">
+          <div className="flex items-center space-x-3 mb-6">
+            <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+              <Briefcase className="w-6 h-6 text-primary-600" />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">Recommended Market Jobs</h3>
+              <p className="text-sm text-gray-500">Based on your resume profile and market trends</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(result.matched_jobs || []).map((job, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="flex flex-col h-full bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="flex justify-between items-start mb-3">
+                  <div className="bg-primary-50 text-primary-700 px-2 py-1 rounded text-xs font-semibold uppercase tracking-wide">
+                    {Math.round(job.match_score)}% Match
+                  </div>
+                  <span className="text-xs text-gray-400 flex items-center">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {new Date(job.date).toLocaleDateString()}
+                  </span>
+                </div>
+
+                <h4 className="text-lg font-bold text-gray-900 mb-1 line-clamp-2" title={job.position}>
+                  {job.position}
+                </h4>
+                <div className="text-gray-600 font-medium mb-4">{job.company}</div>
+
+                <div className="mt-auto space-y-3">
+                  {job.location && (
+                    <div className="flex items-center text-sm text-gray-500">
+                      <MapPin className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <span className="truncate">{job.location}</span>
+                    </div>
+                  )}
+
+                  <a
+                    href={job.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-full px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm font-medium"
+                  >
+                    Apply Now
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </motion.div>
   );
 }
