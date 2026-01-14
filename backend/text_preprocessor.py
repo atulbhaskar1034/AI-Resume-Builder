@@ -447,22 +447,71 @@ class TextPreprocessor:
     def detect_role(self, text: str) -> str:
         """
         Determine the primary role based on keyword frequency analysis.
-        Returns one of: 'Frontend Developer', 'Backend Engineer', 'Data Scientist', 'DevOps Engineer', or 'General Software Engineer'
+        Returns one of: 'Frontend Developer', 'Backend Engineer', 'Data Scientist', 
+        'DevOps Engineer', 'General Software Engineer', or 'Unknown/Non-Resume'
         """
-        text = text.lower()
+        text_lower = text.lower()
         
+        # Check for RESEARCH PAPER indicators - these almost never appear in resumes
+        research_paper_indicators = [
+            'abstract', 'methodology', 'hypothesis', 'literature review',
+            'research findings', 'conclusion', 'introduction', 'references',
+            'doi:', 'et al', 'fig.', 'figure 1', 'figure 2', 'table 1', 'table 2',
+            'journal', 'proceedings', 'conference', 'ieee', 'acm', 'arxiv',
+            'peer review', 'scholarly', 'citation', 'bibliography',
+            'experimental results', 'proposed method', 'related work',
+            'future work', 'acknowledgments', 'keywords:', 'appendix'
+        ]
+        
+        # Count research paper indicators
+        research_count = sum(1 for indicator in research_paper_indicators if indicator in text_lower)
+        
+        # If document has 3+ research paper indicators, it's likely NOT a resume
+        if research_count >= 3:
+            logger.info(f"Document has {research_count} research paper indicators - not a resume")
+            return 'Unknown/Non-Resume'
+        
+        # Basic check: does it have at least some resume-like content?
+        basic_resume_words = ['experience', 'education', 'skills', 'work', 'project']
+        basic_count = sum(1 for word in basic_resume_words if word in text_lower)
+        
+        if basic_count < 2:
+            logger.info(f"Document has only {basic_count} basic resume words - not a resume")
+            return 'Unknown/Non-Resume'
+        
+        logger.info(f"Document identified as resume (research_indicators={research_count}, resume_words={basic_count})")
+        
+        # Calculate role scores
         scores = {role: 0 for role in self.role_keywords}
         
         for role, keywords in self.role_keywords.items():
             for keyword in keywords:
-                scores[role] += text.count(keyword)
+                # Use word boundary matching to avoid partial matches
+                import re
+                pattern = r'\b' + re.escape(keyword) + r'\b'
+                matches = re.findall(pattern, text_lower)
+                scores[role] += len(matches)
         
         # Find the role with the highest score
         best_role = max(scores, key=scores.get)
+        best_score = scores[best_role]
         
-        # If no significant keywords found (all zeros or very low), default fallback
-        if scores[best_role] == 0:
-            return 'General Software Engineer'
+        logger.info(f"Role detection scores: {scores}")
+        
+        # Check total tech-related keyword matches
+        total_score = sum(scores.values())
+        
+        # Require minimum score of 3 to confidently assign a specific tech role
+        if best_score < 3:
+            # If there are SOME tech keywords (but not enough for specific role), 
+            # it's probably a general tech person
+            if total_score > 0:
+                logger.info(f"Low confidence tech role detection (total_score={total_score})")
+                return 'General Software Engineer'
+            else:
+                # No tech keywords at all - likely a non-tech professional
+                logger.info("No tech keywords found - non-tech professional resume")
+                return 'General Professional (Non-Tech Resume)'
             
         return best_role
     

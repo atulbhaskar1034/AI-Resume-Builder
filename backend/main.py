@@ -276,24 +276,66 @@ class ResuMatchAnalyzer:
             logger.info("Generating learning roadmap...")
             career_roadmap = self.recommender.generate_roadmap(missing_skills)
             
-            # Matched Skills for Heatmap
-            matched_skills_list = []
-            if 'matched_skills' in similarity_result:
-                matched_skills_list = similarity_result['matched_skills']
+            # --- HEATMAP: Extract ALL skills from resume and compare with role expectations ---
+            # Step A: Get all skills found in the resume
+            resume_skills_raw = self.similarity_engine._extract_skills(resume_data_for_analysis)
+            resume_skills_lower = {s.lower() for s in resume_skills_raw}
             
-            # Construct Heatmap Data
+            # Step B: Get role-specific expected skills
+            role_expected_skills = self.preprocessor.role_keywords.get(detected_role, [])
+            
+            # Step C: Also add skills from the gap analysis VALID_TECH_SKILLS found in resume
+            for skill in self.gap_analyzer.VALID_TECH_SKILLS:
+                # Check if the skill exists in the resume text
+                import re
+                pattern = r'\b' + re.escape(skill.lower()) + r'\b'
+                if re.search(pattern, resume_text.lower()):
+                    resume_skills_lower.add(skill.lower())
+            
+            # Step D: Build heatmap - matched = skills found in resume, gap = role skills not in resume
             heatmap_data = []
-            for skill in matched_skills_list:
-                heatmap_data.append({"skill": skill, "status": "match", "score": 90}) # Dummy high score for match
+            matched_skills_list = []
             
+            # Add ALL resume skills as matches (green)
+            for i, skill in enumerate(sorted(resume_skills_lower)):
+                # Validate against known tech skills
+                if skill in self.gap_analyzer.VALID_TECH_SKILLS:
+                    matched_skills_list.append(skill)
+                    # Vary the score between 75-100 to make heatmap more interesting
+                    base_score = 100 - (i % 6) * 5  # Cycle through 100, 95, 90, 85, 80, 75
+                    score = max(75, min(100, base_score))
+                    
+                    heatmap_data.append({
+                        "skill": skill, 
+                        "status": "match", 
+                        "score": score
+                    })
+            
+            # Add missing skills (already filtered by gap_analyzer)
             for gap in missing_skills:
                 # SkillGap object has: skill, importance, gap_type
-                score = 0
-                if gap['gap_type'] == 'Critical':
-                    score = 20
-                else:
-                    score = 40
-                heatmap_data.append({"skill": gap['skill'], "status": "gap", "score": score})
+                skill_lower = gap['skill'].lower().strip()
+                # Double-check it's a valid tech skill
+                if skill_lower in self.gap_analyzer.VALID_TECH_SKILLS:
+                    # Calculate score based on importance - higher importance = lower score (bigger gap)
+                    # Importance typically ranges from 0-100+ based on market frequency
+                    importance = gap.get('importance', 50)
+                    
+                    # Calculate continuous score from 0-100 based on importance
+                    # Higher importance = lower score (more critical gap to fill)
+                    # Max importance assumed ~150, map to 0-50 range for gaps
+                    # Formula: score = max(5, 50 - (importance / 3))
+                    raw_score = max(5, min(50, 55 - (importance / 2.5)))
+                    
+                    # Round to nearest 5% increment
+                    score = round(raw_score / 5) * 5
+                    score = max(5, min(50, score))  # Ensure gaps are 5-50%
+                    
+                    heatmap_data.append({
+                        "skill": gap['skill'], 
+                        "status": "gap", 
+                        "score": score
+                    })
 
 
             # Market Job Matching

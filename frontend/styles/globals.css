@@ -7,42 +7,48 @@
     scroll-behavior: smooth;
     font-family: 'Inter', system-ui, sans-serif;
   }
-  
+
   body {
-    @apply bg-slate-50 text-slate-800 antialiased;
+    @apply bg-white text-gray-800 antialiased;
   }
 }
 
 @layer components {
-  /* Minimal Button Styles */
+
+  /* LlamaIndex Style Buttons */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm text-white bg-llama-indigo-600 hover:bg-llama-indigo-700 focus:ring-2 focus:ring-llama-indigo-500 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 text-white bg-black hover:bg-gray-800;
   }
-  
+
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:border-slate-300;
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold tracking-wide uppercase transition-all duration-300 border-2 border-black text-black bg-white hover:bg-black hover:text-white;
   }
-  
+
   .btn-accent {
-    @apply inline-flex items-center justify-center px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-llama-teal-500/20 text-white bg-gradient-to-r from-llama-teal-500 to-llama-teal-600 hover:from-llama-teal-400 hover:to-llama-teal-500;
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold uppercase transition-all duration-300 text-white bg-gradient-to-r from-llama-orange-500 to-llama-coral-400 hover:from-llama-orange-600 hover:to-llama-coral-500;
   }
 
   /* LlamaIndex Style Cards */
   .glass-card {
-    @apply bg-white rounded-xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-200/40 transition-all duration-300;
-  }
-  
-  .feature-card {
-    @apply p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group;
+    @apply bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300;
   }
 
-  /* Utility Text Gradients */
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-llama-indigo-600 to-llama-purple-600;
+  .feature-card {
+    @apply p-8 bg-white rounded-xl border border-gray-100 hover:shadow-lg transition-all duration-300;
   }
-  
-  .text-gradient-teal {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-llama-teal-600 to-llama-indigo-600;
+
+  /* LlamaIndex Gradient Text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-llama-orange-500 via-llama-magenta-500 to-llama-cyan-500;
+  }
+
+  .text-gradient-orange {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-llama-orange-500 to-llama-coral-400;
+  }
+
+  /* Workflow connector line */
+  .workflow-line {
+    @apply bg-gradient-to-b from-llama-orange-500 via-llama-magenta-500 to-llama-cyan-500;
   }
 }
 
@@ -50,12 +56,15 @@
   .animation-delay-200 {
     animation-delay: 200ms;
   }
+
   .animation-delay-400 {
     animation-delay: 400ms;
   }
+
   .animation-delay-600 {
     animation-delay: 600ms;
   }
+
   .backdrop-blur-xs {
     backdrop-filter: blur(2px);
   }

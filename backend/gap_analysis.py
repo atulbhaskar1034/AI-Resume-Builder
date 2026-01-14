@@ -10,6 +10,122 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class GapAnalyzer:
+    # Whitelist of valid technical skills - only these will appear in gap analysis
+    VALID_TECH_SKILLS = {
+        # Programming Languages
+        'python', 'java', 'javascript', 'js', 'typescript', 'ts', 'c++', 'cpp', 'c#', 'csharp', 'c', 
+        'ruby', 'php', 'go', 'golang', 'rust', 'swift', 'kotlin', 'scala', 'r', 'matlab', 'perl', 
+        'dart', 'objective-c', 'objc', 'groovy', 'lua', 'haskell', 'clojure', 'elixir', 'erlang',
+        'shell', 'bash', 'powershell', 'vba', 'cobol', 'fortran', 'assembly', 'asm',
+        
+        # Web Technologies
+        'html', 'html5', 'css', 'css3', 'sass', 'scss', 'less', 'tailwind', 'tailwindcss', 
+        'bootstrap', 'material ui', 'mui', 'chakra', 'styled-components', 'emotion',
+        
+        # Frontend Frameworks & Libraries
+        'react', 'reactjs', 'react.js', 'angular', 'angularjs', 'vue', 'vuejs', 'vue.js', 
+        'svelte', 'next.js', 'nextjs', 'next', 'nuxt', 'nuxtjs', 'gatsby', 'remix',
+        'redux', 'mobx', 'zustand', 'recoil', 'jquery', 'backbone', 'd3', 'd3.js', 'three.js',
+        
+        # Backend Frameworks
+        'node.js', 'nodejs', 'node', 'express', 'expressjs', 'express.js', 'django', 'flask', 
+        'fastapi', 'fast api', 'spring', 'springboot', 'spring boot', 'rails', 'ruby on rails',
+        'laravel', 'symfony', 'asp.net', '.net', 'dotnet', 'nestjs', 'nest.js', 'koa', 'hapi',
+        'gin', 'echo', 'fiber', 'actix', 'rocket',
+        
+        # Databases
+        'sql', 'mysql', 'postgresql', 'postgres', 'psql', 'mongodb', 'mongo', 'redis', 
+        'elasticsearch', 'elastic', 'oracle', 'sqlite', 'mariadb', 'cassandra', 'couchdb', 
+        'dynamodb', 'neo4j', 'firebase', 'firestore', 'supabase', 'cockroachdb', 'timescaledb',
+        'influxdb', 'clickhouse', 'mssql', 'sql server', 'aurora', 'rds', 'bigquery',
+        
+        # Cloud Platforms
+        'aws', 'amazon web services', 'azure', 'microsoft azure', 'gcp', 'google cloud', 
+        'google cloud platform', 'heroku', 'digitalocean', 'linode', 'cloudflare', 'vercel', 
+        'netlify', 'render', 'fly.io', 'railway', 'oracle cloud', 'ibm cloud', 'alibaba cloud',
+        'ec2', 's3', 'lambda', 'cloudfront', 'route53', 'sagemaker', 'ecs', 'eks', 'fargate',
+        
+        # DevOps & Infrastructure  
+        'docker', 'kubernetes', 'k8s', 'terraform', 'ansible', 'puppet', 'chef', 'vagrant',
+        'jenkins', 'gitlab ci', 'gitlab-ci', 'github actions', 'circleci', 'travis ci', 'travisci',
+        'bamboo', 'teamcity', 'argo', 'argocd', 'spinnaker', 'helm', 'istio', 'envoy',
+        'prometheus', 'grafana', 'datadog', 'splunk', 'elk', 'logstash', 'kibana', 'new relic',
+        'nginx', 'apache', 'caddy', 'haproxy', 'traefik', 'consul', 'vault', 'packer',
+        
+        # Data Science, ML & AI - EXPANDED
+        'machine learning', 'ml', 'deep learning', 'dl', 'artificial intelligence', 'ai',
+        'natural language processing', 'nlp', 'computer vision', 'cv', 'reinforcement learning', 'rl',
+        'neural network', 'neural networks', 'cnn', 'rnn', 'lstm', 'transformer', 'transformers',
+        'bert', 'gpt', 'llm', 'llms', 'large language model', 'large language models',
+        'generative ai', 'gen ai', 'genai', 'chatgpt', 'openai', 'langchain', 'llamaindex',
+        'huggingface', 'hugging face', 'diffusers', 'stable diffusion', 'midjourney',
+        
+        # ML/AI Libraries & Tools
+        'pandas', 'numpy', 'scipy', 'scikit-learn', 'sklearn', 'tensorflow', 'tf', 
+        'pytorch', 'torch', 'keras', 'theano', 'caffe', 'mxnet', 'jax', 'flax',
+        'xgboost', 'lightgbm', 'catboost', 'gradient boosting', 'random forest',
+        'opencv', 'cv2', 'pillow', 'pil', 'spacy', 'nltk', 'gensim', 'textblob',
+        'matplotlib', 'seaborn', 'plotly', 'bokeh', 'altair', 'ggplot',
+        
+        # Data Tools & Platforms
+        'jupyter', 'jupyter notebook', 'jupyterlab', 'colab', 'google colab',
+        'spark', 'pyspark', 'apache spark', 'hadoop', 'hdfs', 'hive', 'presto', 'trino',
+        'airflow', 'apache airflow', 'dagster', 'prefect', 'luigi', 'dbt', 'fivetran',
+        'snowflake', 'databricks', 'redshift', 'looker', 'metabase', 'superset',
+        'tableau', 'power bi', 'powerbi', 'excel', 'google sheets', 'looker studio',
+        'mlflow', 'kubeflow', 'mlops', 'weights and biases', 'wandb', 'neptune',
+        'streamlit', 'gradio', 'dash', 'shiny', 'panel',
+        
+        # Version Control & Collaboration
+        'git', 'github', 'gitlab', 'bitbucket', 'svn', 'subversion', 'mercurial', 'hg',
+        'gitflow', 'trunk-based', 'monorepo',
+        
+        # Operating Systems
+        'linux', 'unix', 'ubuntu', 'centos', 'debian', 'fedora', 'rhel', 'redhat',
+        'windows', 'macos', 'mac os', 'freebsd', 'alpine',
+        
+        # API & Protocols
+        'rest', 'restful', 'rest api', 'graphql', 'grpc', 'soap', 'websocket', 'websockets',
+        'oauth', 'oauth2', 'jwt', 'json', 'xml', 'protobuf', 'avro', 'http', 'https',
+        'openapi', 'swagger', 'postman', 'insomnia',
+        
+        # Testing
+        'jest', 'mocha', 'chai', 'pytest', 'unittest', 'junit', 'testng', 'nunit',
+        'selenium', 'cypress', 'playwright', 'puppeteer', 'cucumber', 'behave',
+        'karma', 'jasmine', 'vitest', 'testing library', 'enzyme', 'supertest',
+        'tdd', 'bdd', 'unit testing', 'integration testing', 'e2e testing',
+        
+        # Mobile Development
+        'react native', 'flutter', 'ionic', 'xamarin', 'cordova', 'phonegap',
+        'android', 'android studio', 'ios', 'xcode', 'swiftui', 'uikit', 'jetpack compose',
+        'kotlin multiplatform', 'kmp', 'expo',
+        
+        # Messaging & Streaming
+        'kafka', 'apache kafka', 'rabbitmq', 'celery', 'redis', 'memcached',
+        'sqs', 'sns', 'kinesis', 'pubsub', 'nats', 'zeromq', 'activemq',
+        
+        # Security
+        'cybersecurity', 'security', 'penetration testing', 'pentest', 'owasp',
+        'encryption', 'ssl', 'tls', 'https', 'firewall', 'vpn', 'sso', 'saml', 'ldap',
+        'iam', 'rbac', 'zero trust',
+        
+        # Concepts & Methodologies
+        'agile', 'scrum', 'kanban', 'lean', 'devops', 'devsecops', 'sre', 'gitops',
+        'ci/cd', 'cicd', 'continuous integration', 'continuous deployment',
+        'microservices', 'monolith', 'serverless', 'faas', 'paas', 'saas', 'iaas',
+        'event-driven', 'domain-driven design', 'ddd', 'cqrs', 'event sourcing',
+        'solid', 'dry', 'kiss', 'clean code', 'clean architecture', 'hexagonal',
+        'oop', 'functional programming', 'fp', 'reactive', 'async', 'concurrency',
+        
+        # Project Management & Tools
+        'jira', 'confluence', 'trello', 'asana', 'notion', 'monday', 'linear',
+        'slack', 'teams', 'zoom', 'miro', 'figma', 'sketch', 'adobe xd', 'invision',
+        
+        # Blockchain & Web3
+        'blockchain', 'solidity', 'ethereum', 'web3', 'web3.js', 'ethers.js', 
+        'smart contracts', 'defi', 'nft', 'hardhat', 'truffle', 'foundry'
+    }
+    
     def __init__(self, market_data_path: str = "backend/data/market_trends.json"):
         self.market_data_path = market_data_path
         self.similarity_engine = SimilarityEngine()
@@ -17,7 +133,7 @@ class GapAnalyzer:
         self.market_skills = self._load_market_skills()
 
     def _load_market_skills(self) -> List[Dict[str, Any]]:
-        """Load top market skills from the JSON file."""
+        """Load top market skills from the JSON file, filtering only valid tech skills."""
         try:
             if not os.path.exists(self.market_data_path):
                 logger.warning(f"Market data file not found: {self.market_data_path}")
@@ -25,8 +141,17 @@ class GapAnalyzer:
             
             with open(self.market_data_path, 'r') as f:
                 data = json.load(f)
-                # usage of 'top_keywords' as the source for market skills
-                return data.get('top_keywords', [])
+                raw_keywords = data.get('top_keywords', [])
+                
+                # Filter to only include valid tech skills
+                valid_skills = []
+                for item in raw_keywords:
+                    keyword = item.get('keyword', '').lower().strip()
+                    if keyword in self.VALID_TECH_SKILLS:
+                        valid_skills.append(item)
+                
+                logger.info(f"Loaded {len(valid_skills)} valid tech skills from {len(raw_keywords)} raw keywords")
+                return valid_skills
         except Exception as e:
             logger.error(f"Failed to load market data: {str(e)}")
             return []
