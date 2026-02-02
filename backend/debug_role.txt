@@ -1,0 +1,428 @@
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:14:40.326633 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:14:40.431359 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:17:35.849925 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:17:35.953611 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:21:07.214480 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:21:07.316829 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:24:06.223503 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:24:06.483901 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:26:15.605528 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:26:15.835738 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:29:14.133243 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:29:14.238820 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:35:08.971381 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:35:09.082619 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:37:29.708124 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:37:29.810725 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:41:31.551520 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Metallurgical Engineer", "match_score": 0, "match_score_reasoning": "User has 0 of the required skills based on the provided context.", "heatmap_data": [{"skill": "Process Control", "status": "gap", "score": 30}, {"skill": "Data Analysis", "status": "gap", "score": 30}, {"skill": "Project Management", "status": "gap", "score": 30}, {"skill": "Manufacturing Systems", "status": "gap", "score": 25}, {"skill": "Computer Aided Engi...
+
+
+--- SSE ROLE DEBUG 2026-01-30 21:41:31.656878 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'heatmap', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Metallurgical Engineer", "match_score": 0, "match_score_reasoning": "User has 0 of the required skills based on the provided data.", "heatmap_data": [{"skill": "Process Simulation Software", "status": "gap", "score": 30}, {"skill": "Statistical Analysis", "status": "gap", "score": 30}, {"skill": "Failure Analysis", "status": "gap", "score": 30}, {"skill": "Computer-Aided Design (CAD)", "status": "gap", "score": 35}, {"skill": ...
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:03:30.159837 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 33.33
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Metallurgical Engineer", "match_score": 33.33, "match_score_reasoning": "User has 4 of 12 market-demanded skills: ['Design', 'Engineering', 'Technical', 'Teams']", "skill_radar": [{"skill": "Design", "userScore": 7, "marketScore": 10}, {"skill": "Engineering", "userScore": 8, "marketScore": 10}, {"skill": "Technical", "userScore": 7, "marketScore": 10}, {"skill": "Tools", "userScore": 5, "marketScore": 10}, {"skill": "Teams", ...
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:03:30.269830 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgy and Materials Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgy and Materials Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgy and Materials Engineer
+match_score in payload: 33.33
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Metallurgy and Materials Engineer", "match_score": 33.33, "match_score_reasoning": "User has 4 of 12 market-demanded skills: ['Design', 'Engineering', 'Technical', 'Teams']", "skill_radar": [{"skill": "Design", "userScore": 7, "marketScore": 10}, {"skill": "Engineering", "userScore": 8, "marketScore": 10}, {"skill": "Technical", "userScore": 7, "marketScore": 10}, {"skill": "Product", "userScore": 3, "marketScore": 10}, {"skil...
+
+--- FETCH JOBS START AI Engineer/Data Scientist ---
+API Response received: 101 items
+Keywords: ['ai', 'engineer', 'data', 'scientist']
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 101 items
+Keywords: ['ai', 'ml', 'engineer']
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:09:46.666528 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI Engineer/Data Scientist
+current_state role: AI Engineer/Data Scientist
+Final role being used: AI Engineer/Data Scientist
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI Engineer/Data Scientist
+match_score in payload: 50.0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI Engineer/Data Scientist", "match_score": 50.0, "match_score_reasoning": "User has 6 of 12 market-demanded skills: ['Data', 'Design', 'Engineering', 'Technical', 'Tools', 'Teams']", "skill_radar": [{"skill": "Data", "userScore": 8, "marketScore": 10}, {"skill": "Design", "userScore": 7, "marketScore": 10}, {"skill": "Engineering", "userScore": 9, "marketScore": 10}, {"skill": "Technical", "userScore": 8, "marketScore": 10}, ...
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:09:46.767894 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 33.33
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 33.33, "match_score_reasoning": "User has 4 of 12 market-demanded skills: ['Design', 'Technical', 'Data', 'Engineering']", "skill_radar": [{"skill": "Technical", "userScore": 8, "marketScore": 10}, {"skill": "Data", "userScore": 9, "marketScore": 10}, {"skill": "Engineering", "userScore": 7, "marketScore": 10}, {"skill": "Design", "userScore": 6, "marketScore": 10}, {"skill": "Systems", "userSco...
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 101 items
+Keywords: ['ai', 'ml', 'engineer']
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 101 items
+Keywords: ['ai', 'ml', 'engineer']
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:17:27.528354 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 33.33
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 33.33, "match_score_reasoning": "User has 4 of 12 market-demanded skills: ['Design', 'Data', 'Product', 'Cloud']", "skill_radar": [{"skill": "Design", "userScore": 7, "marketScore": 10}, {"skill": "Data", "userScore": 9, "marketScore": 10}, {"skill": "Product", "userScore": 6, "marketScore": 10}, {"skill": "Developer", "userScore": 8, "marketScore": 10}, {"skill": "Cloud", "userScore": 4, "marke...
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:17:27.632933 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 25.0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 25.0, "match_score_reasoning": "User has 3 of 12 market-demanded skills: ['Design', 'Data', 'Product']", "skill_radar": [{"skill": "Design", "userScore": 7, "marketScore": 10}, {"skill": "Data", "userScore": 8, "marketScore": 10}, {"skill": "Product", "userScore": 6, "marketScore": 10}, {"skill": "Developer", "userScore": 5, "marketScore": 10}, {"skill": "Teams", "userScore": 4, "marketScore": 1...
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 101 items
+Keywords: ['ai', 'ml', 'engineer']
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 101 items
+Keywords: ['ai', 'ml', 'engineer']
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:22:22.193147 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 25.0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 25.0, "match_score_reasoning": "User has 3 of 12 market-demanded skills: ['Design', 'Git', 'Excel']", "skill_radar": [{"skill": "Design", "userScore": 7, "marketScore": 10}, {"skill": "Git", "userScore": 8, "marketScore": 10}, {"skill": "Aws", "userScore": 2, "marketScore": 10}, {"skill": "Api", "userScore": 5, "marketScore": 10}, {"skill": "React", "userScore": 1, "marketScore": 10}, {"skill": ...
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:22:22.300748 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 25.0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 25.0, "match_score_reasoning": "User has 3 of 12 market-demanded skills: ['Design', 'Git', 'Excel']", "skill_radar": [{"skill": "Design", "userScore": 7, "marketScore": 10}, {"skill": "Git", "userScore": 8, "marketScore": 10}, {"skill": "Aws", "userScore": 1, "marketScore": 10}, {"skill": "Api", "userScore": 5, "marketScore": 10}, {"skill": "React", "userScore": 1, "marketScore": 10}, {"skill": ...
+
+--- FETCH JOBS START AI Engineer/Data Scientist ---
+API Response received: 101 items
+Keywords: ['ai', 'engineer', 'data', 'scientist']
+Matched Jobs after Generic Filter: 15
+Top Match: Data Scientist Score: 21.0
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 101 items
+Keywords: ['ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: ML AI Ops Engineer Score: 20.1
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:37:44.706188 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI Engineer/Data Scientist
+current_state role: AI Engineer/Data Scientist
+Final role being used: AI Engineer/Data Scientist
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI Engineer/Data Scientist
+match_score in payload: 66.67
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI Engineer/Data Scientist", "match_score": 66.67, "match_score_reasoning": "User has 8 of 12 market-demanded skills: ['Data', 'Design', 'Teams', 'Python', 'Git', 'Data Science', 'Sql', 'Excel']", "skill_radar": [{"skill": "Analytics", "userScore": 6, "marketScore": 10}, {"skill": "Data", "userScore": 8, "marketScore": 10}, {"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Git", "userScore": 7, "marketScore": ...
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:37:44.810341 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 25.0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 25.0, "match_score_reasoning": "User has 3 of 12 market-demanded skills: ['Design', 'Analytics', 'Git']", "skill_radar": [{"skill": "Design", "userScore": 7, "marketScore": 10}, {"skill": "Analytics", "userScore": 8, "marketScore": 10}, {"skill": "Git", "userScore": 9, "marketScore": 10}, {"skill": "Aws", "userScore": 1, "marketScore": 10}, {"skill": "Api", "userScore": 3, "marketScore": 10}, {"...
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 101 items
+Keywords: ['ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: ML AI Ops Engineer Score: 20.1
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 101 items
+Keywords: ['ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: ML AI Ops Engineer Score: 20.1
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:41:19.698746 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 41.67
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 41.67, "match_score_reasoning": "User has 5 of 12 market-demanded skills: ['Python', 'Sql', 'Git', 'Analytics', 'Api']", "skill_radar": [{"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Sql", "userScore": 7, "marketScore": 10}, {"skill": "Git", "userScore": 7, "marketScore": 10}, {"skill": "Analytics", "userScore": 8, "marketScore": 10}, {"skill": "Api", "userScore": 6, "market...
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:41:19.804150 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 41.67
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 41.67, "match_score_reasoning": "User has 5 of 12 market-demanded skills: ['Python', 'Sql', 'Git', 'Analytics']", "skill_radar": [{"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Git", "userScore": 7, "marketScore": 10}, {"skill": "Sql", "userScore": 7, "marketScore": 10}, {"skill": "Analytics", "userScore": 6, "marketScore": 10}, {"skill": "Aws", "userScore": 2, "marketScore":...
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 101 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Engineer Enterprise Readiness Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 101 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Engineer Enterprise Readiness Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:52:08.494794 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Software Engineer
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50.0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50.0, "match_score_reasoning": "User has 6 of 12 market-demanded skills: ['Api', 'Git', 'Java', 'Sql', 'Rest', 'Python']", "skill_radar": [{"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Api", "userScore": 8, "marketScore": 10}, {"skill": "Sql", "userScore": 7, "marketScore": 10}, {"skill": "Git", "userScore": 7, "marketScore": 10}, {"skill": "Analytics", "userScore": 4, "m...
+
+
+--- SSE ROLE DEBUG 2026-01-30 22:52:08.598469 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Software Engineer
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50.0
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50.0, "match_score_reasoning": "User has 6 of 12 market-demanded skills: ['Api', 'Git', 'Java', 'Sql', 'Rest', 'Python']", "skill_radar": [{"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Api", "userScore": 8, "marketScore": 10}, {"skill": "Sql", "userScore": 7, "marketScore": 10}, {"skill": "Git", "userScore": 7, "marketScore": 10}, {"skill": "Analytics", "userScore": 4, "m...

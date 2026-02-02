@@ -54,10 +54,14 @@ export interface HeatmapItem {
 export interface LearningNode {
   month: number;
   skill: string;
+  priority?: 'foundation' | 'intermediate' | 'advanced' | 'specialization';
   course_title: string;
   course_url: string;
   thumbnail: string;
   description: string;
+  why_learn?: string;
+  prerequisites?: string;
+  learning_outcome?: string;
   status: string;
 }
 
@@ -71,11 +75,18 @@ export interface MatchedJob {
   match_score: number;
 }
 
+export interface SkillRadarItem {
+  skill: string;
+  userScore: number;
+  marketScore: number;
+}
+
 export interface AnalysisResult {
   status: string;
   role_detected: string;
   match_score: number;
   heatmap_data: HeatmapItem[];
+  skill_radar?: SkillRadarItem[];
   roadmap: LearningNode[];
   matched_jobs: MatchedJob[];
 
@@ -109,6 +120,13 @@ export const analyzeResume = async (
       'Content-Type': 'multipart/form-data',
     },
   });
+
+  console.log('=== ANALYZE RESPONSE ===');
+  console.log('Full response:', response.data);
+  console.log('Roadmap:', response.data.roadmap);
+  console.log('Roadmap length:', response.data.roadmap?.length);
+  console.log('Matched jobs:', response.data.matched_jobs);
+  console.log('Matched jobs length:', response.data.matched_jobs?.length);
 
   return response.data;
 };

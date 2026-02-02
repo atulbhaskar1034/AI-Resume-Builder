@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import AIChatbot from './AIChatbot';
 import { motion } from 'framer-motion';
 
 interface LayoutProps {
@@ -22,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
                 {children}
             </motion.main>
             <Footer />
-            <AIChatbot />
         </div>
     );
 }
+

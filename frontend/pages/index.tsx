@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import WorkflowSection from '../components/WorkflowSection';
 import Features from '../components/Features';
+import ChatWidget from '../components/ChatWidget';
 import Head from 'next/head';
 import Link from 'next/link';
 import { ArrowRight, Code, Database, Server, Cpu, Layers, Sparkles, Zap } from 'lucide-react';
@@ -272,6 +273,9 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      {/* Chat Widget */}
+      <ChatWidget />
     </Layout>
   );
 }

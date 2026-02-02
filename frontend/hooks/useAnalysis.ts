@@ -1,10 +1,10 @@
 import { useState, useCallback } from 'react';
-import { 
-  analyzeResume, 
-  analyzeBatchResumes as apiAnalyzeBatchResumes, 
-  getBatchAnalysisStatus, 
-  AnalysisResult, 
-  BatchAnalysisResult 
+import {
+  analyzeResume,
+  analyzeBatchResumes as apiAnalyzeBatchResumes,
+  getBatchAnalysisStatus,
+  AnalysisResult,
+  BatchAnalysisResult
 } from '../services/api';
 import toast from 'react-hot-toast';
 
@@ -19,6 +19,7 @@ interface UseAnalysisActions {
   analyzeSingleResume: (file: File, jobDescription: string) => Promise<void>;
   analyzeBatchResumes: (files: File[], jobDescription: string) => Promise<void>;
   checkBatchStatus: (jobId: string) => Promise<void>;
+  setResultsDirectly: (results: AnalysisResult) => void;
   reset: () => void;
 }
 
@@ -32,17 +33,17 @@ export const useAnalysis = (): UseAnalysisState & UseAnalysisActions => {
 
   const analyzeSingleResume = useCallback(async (file: File, jobDescription: string) => {
     setState(prev => ({ ...prev, isLoading: true, error: null, results: null }));
-    
+
     try {
       const loadingToast = toast.loading('Analyzing resume...');
       const results = await analyzeResume(file, jobDescription);
-      
+
       setState(prev => ({
         ...prev,
         isLoading: false,
         results,
       }));
-      
+
       toast.dismiss(loadingToast);
       toast.success('Analysis completed successfully!');
     } catch (error) {
@@ -58,16 +59,16 @@ export const useAnalysis = (): UseAnalysisState & UseAnalysisActions => {
 
   const analyzeBatchResumes = useCallback(async (files: File[], jobDescription: string) => {
     setState(prev => ({ ...prev, isLoading: true, error: null, batchResults: null }));
-    
+
     try {
       const loadingToast = toast.loading(`Starting batch analysis for ${files.length} resumes...`);
       const { job_id } = await apiAnalyzeBatchResumes(files, jobDescription);
-      
+
       const pollStatus = async () => {
         try {
           const batchResults = await getBatchStatus(job_id);
           setState(prev => ({ ...prev, batchResults }));
-          
+
           if (batchResults.status === 'completed') {
             toast.dismiss(loadingToast);
             toast.success('Batch analysis completed!');
@@ -86,7 +87,7 @@ export const useAnalysis = (): UseAnalysisState & UseAnalysisActions => {
           toast.error(errorMessage);
         }
       };
-      
+
       pollStatus();
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Failed to start batch analysis';
@@ -119,11 +120,22 @@ export const useAnalysis = (): UseAnalysisState & UseAnalysisActions => {
     });
   }, []);
 
+  const setResultsDirectly = useCallback((results: AnalysisResult) => {
+    console.log('setResultsDirectly called with role_detected:', results?.role_detected);
+    setState(prev => ({
+      ...prev,
+      isLoading: false,
+      results,
+      error: null,
+    }));
+  }, []);
+
   return {
     ...state,
     analyzeSingleResume,
     analyzeBatchResumes,
     checkBatchStatus,
+    setResultsDirectly,
     reset,
   };
 };

@@ -10,9 +10,10 @@ interface HeatmapItem {
 
 interface AnimatedHeatmapProps {
     data: HeatmapItem[];
+    onSkillClick?: (skill: string) => void;
 }
 
-export default function AnimatedHeatmap({ data }: AnimatedHeatmapProps) {
+export default function AnimatedHeatmap({ data, onSkillClick }: AnimatedHeatmapProps) {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [filter, setFilter] = useState<'all' | 'matched' | 'gaps'>('all');
 
@@ -82,8 +83,8 @@ export default function AnimatedHeatmap({ data }: AnimatedHeatmapProps) {
                             key={f}
                             onClick={() => setFilter(f)}
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${filter === f
-                                    ? 'bg-black text-white'
-                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                ? 'bg-black text-white'
+                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                 }`}
                         >
                             {f === 'all' ? 'All Skills' : f === 'matched' ? 'Matched' : 'Skill Gaps'}
@@ -111,7 +112,8 @@ export default function AnimatedHeatmap({ data }: AnimatedHeatmapProps) {
                                     transition={{ delay: index * 0.03 }}
                                     onMouseEnter={() => setHoveredIndex(index)}
                                     onMouseLeave={() => setHoveredIndex(null)}
-                                    className="relative group"
+                                    onClick={() => !isMatch && onSkillClick?.(item.skill)}
+                                    className={`relative group ${!isMatch ? 'cursor-pointer' : ''}`}
                                 >
                                     <motion.div
                                         animate={{
@@ -138,10 +140,10 @@ export default function AnimatedHeatmap({ data }: AnimatedHeatmapProps) {
                                             <div>
                                                 <h4 className="font-bold text-gray-900 capitalize text-lg">{item.skill}</h4>
                                                 <span
-                                                    className="text-xs font-semibold uppercase tracking-wider"
+                                                    className={`text-xs font-semibold uppercase tracking-wider ${!isMatch && onSkillClick ? 'hover:underline' : ''}`}
                                                     style={{ color: colors.text }}
                                                 >
-                                                    {isMatch ? '✓ Matched' : '+ Gap to fill'}
+                                                    {isMatch ? '✓ Matched' : '+ Click to improve'}
                                                 </span>
                                             </div>
 

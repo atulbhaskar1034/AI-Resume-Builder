@@ -1,0 +1,17 @@
+
+John Doe
+Python Software Developer
+
+Experience:
+- 3 years Python development at TechCorp
+- Built REST APIs with Flask and Django
+- Basic SQL knowledge
+- Familiar with Git version control
+
+Education:
+- B.S. Computer Science, University of Technology
+
+Skills:
+- Python, Flask, Django, SQL, Git
+- Basic HTML/CSS
+- Linux command line

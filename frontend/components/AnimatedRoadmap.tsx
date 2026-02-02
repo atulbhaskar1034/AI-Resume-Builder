@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, ArrowRight, Play, CheckCircle, Clock, ExternalLink, Sparkles } from 'lucide-react';
+import { BookOpen, ArrowRight, Play, CheckCircle, Clock, ExternalLink, Sparkles, Lightbulb, Target, GraduationCap, ChevronDown, ChevronUp, Zap } from 'lucide-react';
 
 interface RoadmapItem {
     month: number;
     skill: string;
+    priority?: 'foundation' | 'intermediate' | 'advanced' | 'specialization';
     course_title: string;
     course_url: string;
     thumbnail?: string;
     description: string;
+    why_learn?: string;
+    prerequisites?: string;
+    learning_outcome?: string;
     status?: string;
 }
 
@@ -25,6 +29,33 @@ const monthColors = [
     { bg: 'from-llama-purple-500 to-llama-indigo-500', text: '#6366F1', light: 'rgba(99, 102, 241, 0.1)' },
     { bg: 'from-llama-indigo-500 to-llama-cyan-500', text: '#00D9FF', light: 'rgba(0, 217, 255, 0.1)' },
 ];
+
+const priorityConfig = {
+    foundation: {
+        label: 'Foundation',
+        icon: '🏗️',
+        color: 'bg-blue-100 text-blue-700 border-blue-200',
+        description: 'Core concepts to build upon'
+    },
+    intermediate: {
+        label: 'Intermediate',
+        icon: '📈',
+        color: 'bg-amber-100 text-amber-700 border-amber-200',
+        description: 'Building on fundamentals'
+    },
+    advanced: {
+        label: 'Advanced',
+        icon: '🚀',
+        color: 'bg-purple-100 text-purple-700 border-purple-200',
+        description: 'Industry-ready skills'
+    },
+    specialization: {
+        label: 'Specialization',
+        icon: '⭐',
+        color: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+        description: 'Expert-level mastery'
+    },
+};
 
 export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadmapProps) {
     const [hoveredMonth, setHoveredMonth] = useState<number | null>(null);
@@ -89,10 +120,10 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                             >
                                 <BookOpen className="w-6 h-6 text-white" />
                             </motion.div>
-                            <h3 className="text-2xl font-bold text-black">Your 6-Month Journey</h3>
+                            <h3 className="text-2xl font-bold text-black">Your AI-Curated Learning Path</h3>
                         </div>
                         <p className="text-gray-500">
-                            Personalized learning path to become a top {roleDetected || 'professional'}
+                            Intelligently ordered courses to become a top {roleDetected || 'professional'}
                         </p>
                     </div>
 
@@ -103,6 +134,19 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                     >
                         <Sparkles className="w-8 h-8 text-llama-orange-500" />
                     </motion.div>
+                </div>
+
+                {/* Learning path phases legend */}
+                <div className="mt-6 flex flex-wrap gap-3">
+                    {Object.entries(priorityConfig).map(([key, config]) => (
+                        <div
+                            key={key}
+                            className={`flex items-center gap-2 px-3 py-1.5 rounded-full border ${config.color} text-xs font-medium`}
+                        >
+                            <span>{config.icon}</span>
+                            <span>{config.label}</span>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Progress bar */}
@@ -197,7 +241,9 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                                     {/* Course cards */}
                                     <div className="space-y-4">
                                         {items.map((item, itemIndex) => {
-                                            const isExpanded = expandedCard === monthIndex * 10 + itemIndex;
+                                            const cardKey = monthIndex * 10 + itemIndex;
+                                            const isExpanded = expandedCard === cardKey;
+                                            const priorityInfo = item.priority ? priorityConfig[item.priority] : null;
 
                                             return (
                                                 <motion.div
@@ -205,19 +251,17 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                                                     initial={{ opacity: 0, y: 20 }}
                                                     animate={{ opacity: 1, y: 0 }}
                                                     transition={{ delay: 0.3 + monthIndex * 0.1 + itemIndex * 0.05 }}
-                                                    whileHover={{ y: -4, boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }}
-                                                    className="group relative rounded-xl border border-gray-100 overflow-hidden transition-all duration-300"
-                                                    style={{ backgroundColor: colorScheme.light }}
-                                                    onClick={() => setExpandedCard(isExpanded ? null : monthIndex * 10 + itemIndex)}
+                                                    className="group relative rounded-xl border border-gray-100 overflow-hidden transition-all duration-300 bg-white hover:shadow-xl"
                                                 >
                                                     {/* Gradient accent bar */}
                                                     <div className={`absolute top-0 left-0 w-1 h-full bg-gradient-to-b ${colorScheme.bg}`} />
 
                                                     <div className="p-5 pl-6">
+                                                        {/* Top row with thumbnail and main info */}
                                                         <div className="flex gap-4">
                                                             {/* Thumbnail */}
                                                             <div className="relative flex-shrink-0">
-                                                                <div className="w-20 h-14 rounded-lg overflow-hidden bg-gray-200">
+                                                                <div className="w-24 h-16 rounded-lg overflow-hidden bg-gray-200">
                                                                     {item.thumbnail ? (
                                                                         <img
                                                                             src={item.thumbnail}
@@ -232,20 +276,21 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                                                                         </div>
                                                                     )}
                                                                 </div>
-                                                                {/* Play button overlay */}
-                                                                <motion.div
-                                                                    initial={{ opacity: 0 }}
-                                                                    whileHover={{ opacity: 1 }}
-                                                                    className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center"
-                                                                >
-                                                                    <Play className="w-6 h-6 text-white fill-white" />
-                                                                </motion.div>
                                                             </div>
 
                                                             {/* Content */}
                                                             <div className="flex-1 min-w-0">
-                                                                {/* Skill tag */}
-                                                                <div className="flex items-center gap-2 mb-1">
+                                                                {/* Tags row */}
+                                                                <div className="flex flex-wrap items-center gap-2 mb-2">
+                                                                    {/* Priority badge */}
+                                                                    {priorityInfo && (
+                                                                        <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${priorityInfo.color}`}>
+                                                                            <span>{priorityInfo.icon}</span>
+                                                                            {priorityInfo.label}
+                                                                        </span>
+                                                                    )}
+
+                                                                    {/* Skill tag */}
                                                                     <span
                                                                         className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
                                                                         style={{
@@ -255,11 +300,6 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                                                                     >
                                                                         {item.skill}
                                                                     </span>
-                                                                    {item.status === 'Bonus' && (
-                                                                        <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-purple-100 text-purple-600">
-                                                                            Bonus
-                                                                        </span>
-                                                                    )}
                                                                 </div>
 
                                                                 {/* Title */}
@@ -267,21 +307,111 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                                                                     {item.course_title}
                                                                 </h5>
 
-                                                                {/* Description - expandable */}
-                                                                <AnimatePresence>
-                                                                    {isExpanded && (
-                                                                        <motion.p
-                                                                            initial={{ height: 0, opacity: 0 }}
-                                                                            animate={{ height: 'auto', opacity: 1 }}
-                                                                            exit={{ height: 0, opacity: 0 }}
-                                                                            className="text-sm text-gray-500 mb-2"
-                                                                        >
-                                                                            {item.description}
-                                                                        </motion.p>
-                                                                    )}
-                                                                </AnimatePresence>
+                                                                {/* Brief description */}
+                                                                <p className="text-sm text-gray-500 line-clamp-1">
+                                                                    {item.description}
+                                                                </p>
+                                                            </div>
 
-                                                                {/* Action button */}
+                                                            {/* Expand button and arrow */}
+                                                            <div className="flex items-center gap-2">
+                                                                <motion.button
+                                                                    onClick={() => setExpandedCard(isExpanded ? null : cardKey)}
+                                                                    whileHover={{ scale: 1.05 }}
+                                                                    whileTap={{ scale: 0.95 }}
+                                                                    className={`flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${isExpanded
+                                                                            ? 'bg-gray-100 text-gray-600'
+                                                                            : 'bg-violet-50 text-violet-600 hover:bg-violet-100'
+                                                                        }`}
+                                                                >
+                                                                    {isExpanded ? (
+                                                                        <>Less <ChevronUp className="w-3 h-3" /></>
+                                                                    ) : (
+                                                                        <>Why this? <ChevronDown className="w-3 h-3" /></>
+                                                                    )}
+                                                                </motion.button>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Expanded content */}
+                                                        <AnimatePresence>
+                                                            {isExpanded && (
+                                                                <motion.div
+                                                                    initial={{ height: 0, opacity: 0 }}
+                                                                    animate={{ height: 'auto', opacity: 1 }}
+                                                                    exit={{ height: 0, opacity: 0 }}
+                                                                    transition={{ duration: 0.3 }}
+                                                                    className="overflow-hidden"
+                                                                >
+                                                                    <div className="mt-4 pt-4 border-t border-gray-100 space-y-4">
+                                                                        {/* Why Learn This */}
+                                                                        {item.why_learn && (
+                                                                            <div className="flex gap-3 p-3 rounded-lg bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-100">
+                                                                                <div className="flex-shrink-0">
+                                                                                    <div className="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center">
+                                                                                        <Lightbulb className="w-4 h-4 text-violet-600" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h6 className="text-sm font-semibold text-violet-800 mb-1">Why You Should Learn This</h6>
+                                                                                    <p className="text-sm text-violet-700">{item.why_learn}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        )}
+
+                                                                        {/* Prerequisites */}
+                                                                        {item.prerequisites && (
+                                                                            <div className="flex gap-3 p-3 rounded-lg bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-100">
+                                                                                <div className="flex-shrink-0">
+                                                                                    <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
+                                                                                        <Target className="w-4 h-4 text-amber-600" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h6 className="text-sm font-semibold text-amber-800 mb-1">Prerequisites</h6>
+                                                                                    <p className="text-sm text-amber-700">{item.prerequisites}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        )}
+
+                                                                        {/* Learning Outcome */}
+                                                                        {item.learning_outcome && (
+                                                                            <div className="flex gap-3 p-3 rounded-lg bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-100">
+                                                                                <div className="flex-shrink-0">
+                                                                                    <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
+                                                                                        <GraduationCap className="w-4 h-4 text-emerald-600" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <h6 className="text-sm font-semibold text-emerald-800 mb-1">What You'll Achieve</h6>
+                                                                                    <p className="text-sm text-emerald-700">{item.learning_outcome}</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        )}
+
+                                                                        {/* Start Learning Button */}
+                                                                        <div className="flex justify-end">
+                                                                            <motion.a
+                                                                                href={item.course_url}
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                                whileHover={{ scale: 1.02 }}
+                                                                                whileTap={{ scale: 0.98 }}
+                                                                                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white font-medium bg-gradient-to-r ${colorScheme.bg} shadow-lg hover:shadow-xl transition-shadow`}
+                                                                            >
+                                                                                <Zap className="w-4 h-4" />
+                                                                                Start Learning Now
+                                                                                <ExternalLink className="w-4 h-4" />
+                                                                            </motion.a>
+                                                                        </div>
+                                                                    </div>
+                                                                </motion.div>
+                                                            )}
+                                                        </AnimatePresence>
+
+                                                        {/* Collapsed state - simple link */}
+                                                        {!isExpanded && (
+                                                            <div className="mt-3 flex items-center justify-between">
                                                                 <a
                                                                     href={item.course_url}
                                                                     target="_blank"
@@ -293,20 +423,20 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                                                                     Start Learning
                                                                     <ExternalLink className="w-3 h-3" />
                                                                 </a>
-                                                            </div>
 
-                                                            {/* Arrow indicator */}
-                                                            <motion.div
-                                                                animate={{ x: [0, 5, 0] }}
-                                                                transition={{ duration: 1.5, repeat: Infinity }}
-                                                                className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm group-hover:shadow-md transition-shadow"
-                                                            >
-                                                                <ArrowRight
-                                                                    className="w-5 h-5"
-                                                                    style={{ color: colorScheme.text }}
-                                                                />
-                                                            </motion.div>
-                                                        </div>
+                                                                {/* Arrow indicator */}
+                                                                <motion.div
+                                                                    animate={{ x: [0, 5, 0] }}
+                                                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                                                    className="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-gray-50 group-hover:bg-gray-100 transition-colors"
+                                                                >
+                                                                    <ArrowRight
+                                                                        className="w-4 h-4"
+                                                                        style={{ color: colorScheme.text }}
+                                                                    />
+                                                                </motion.div>
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </motion.div>
                                             );
@@ -332,7 +462,7 @@ export default function AnimatedRoadmap({ roadmap, roleDetected }: AnimatedRoadm
                                 🎉 Journey Complete!
                             </h4>
                             <p className="text-sm text-green-600">
-                                After 6 months, you'll have mastered all the skills needed for your dream role.
+                                After completing this roadmap, you'll have mastered all the skills needed for your dream {roleDetected || 'role'}.
                             </p>
                         </div>
                     </motion.div>

@@ -2,15 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, AlertCircle, TrendingUp, Target, Briefcase, ArrowRight } from 'lucide-react';
 import AnimatedRoadmap from './AnimatedRoadmap';
-import AnimatedHeatmap from './AnimatedHeatmap';
+import SkillRadarChart from './SkillRadarChart';
 
 import { AnalysisResult } from '../services/api';
 
 interface ResultsDashboardProps {
     result: AnalysisResult;
+    onSkillClick?: (skill: string) => void;
 }
 
-export default function ResultsDashboard({ result }: ResultsDashboardProps) {
+export default function ResultsDashboard({ result, onSkillClick }: ResultsDashboardProps) {
     // Get continuous red-to-green color based on score (0-100)
     const getHeatmapColor = (score: number) => {
         const s = Math.max(0, Math.min(100, score));
@@ -45,6 +46,17 @@ export default function ResultsDashboard({ result }: ResultsDashboardProps) {
     };
 
     const overallScore = Math.round(result.match_score || 0);
+
+    // Debug logging
+    console.log('=== RESULTS DASHBOARD ===');
+    console.log('Full result object:', result);
+    console.log('role_detected value:', result.role_detected);
+    console.log('typeof role_detected:', typeof result.role_detected);
+    console.log('All result keys:', Object.keys(result));
+    console.log('Roadmap:', result.roadmap);
+    console.log('Roadmap length:', result.roadmap?.length);
+    console.log('Matched jobs:', result.matched_jobs);
+    console.log('Matched jobs length:', result.matched_jobs?.length);
 
     return (
         <div className="space-y-8">
@@ -138,13 +150,13 @@ export default function ResultsDashboard({ result }: ResultsDashboardProps) {
                                 <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-green-50 border border-green-100">
                                     <CheckCircle className="w-4 h-4 text-green-600" />
                                     <span className="text-sm font-medium text-green-700">
-                                        {result.heatmap_data?.filter(h => h.status === 'match').length || 0} Skills Matched
+                                        {result.skill_radar?.filter(s => s.userScore > 5).length || 0} Skills Matched
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-orange-50 border border-orange-100">
                                     <AlertCircle className="w-4 h-4 text-orange-500" />
                                     <span className="text-sm font-medium text-orange-600">
-                                        {result.heatmap_data?.filter(h => h.status === 'gap').length || 0} Gaps to Fill
+                                        {result.skill_radar?.filter(s => s.userScore <= 5).length || 0} Gaps to Fill
                                     </span>
                                 </div>
                                 {result.roadmap && (
@@ -161,14 +173,14 @@ export default function ResultsDashboard({ result }: ResultsDashboardProps) {
                 </div>
             </motion.div>
 
-            {/* Skill Heatmap - Using AnimatedHeatmap component */}
-            {result.heatmap_data && result.heatmap_data.length > 0 && (
+            {/* Skill Radar Chart - User vs Market (Primary Heatmap) */}
+            {result.skill_radar && result.skill_radar.length > 0 && (
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
+                    transition={{ delay: 0.3 }}
                 >
-                    <AnimatedHeatmap data={result.heatmap_data} />
+                    <SkillRadarChart data={result.skill_radar} />
                 </motion.div>
             )}
 
