@@ -17,6 +17,7 @@ from datetime import datetime
 from tools import tools
 from logger import log_message_sync, send_node_status_sync, send_result_sync
 from fetch_market import fetch_jobs_by_role
+from youtube_courses import fetch_courses_for_skill_gaps, format_courses_for_llm, generate_search_url_fallback
 
 # Load environment variables
 load_dotenv()
@@ -195,6 +196,38 @@ def synthesize_roadmap(state: GraphState) -> GraphState:
     
     log_message_sync(f"[INFO] Found {len(market_jobs)} live jobs and {len(market_skills)} market skills", step="synthesize")
     
+    # FALLBACK: If no market skills found (e.g. non-tech role), infer them or use defaults
+    if not market_skills:
+        log_message_sync(f"[WARN] No market skills found for {role}. Using fallback skills.", step="synthesize")
+        # Basic fallback to ensure radar chart works. The LLM will refine this.
+        market_skills = ["Technical Knowledge", "Problem Solving", "Project Management", "Communication", "Data Analysis", "Industry Tools"]
+        
+    # Fetch LIVE YouTube courses for skill gaps - Ensure 6 months of content
+    log_message_sync(f"[INFO] Generatng search queries for 6-month roadmap...", step="synthesize")
+    
+    # Create expanded search queries to ensure we have enough content for 6 months
+    search_queries = list(skill_gaps)
+    
+    # If fewer than 6, add "Advanced" and "Project" variations to fill the roadmap
+    needed = 6 - len(search_queries)
+    if needed > 0:
+        for gap in skill_gaps[:needed]:
+            search_queries.append(f"Advanced {gap} Course")
+            
+    # If still short (e.g. only 1 gap), add role-based topics
+    if len(search_queries) < 6:
+        search_queries.append(f"{role} Full Course")
+        search_queries.append(f"{role} Capstone Project")
+        search_queries.append(f"{role} Interview Preparation")
+        
+    search_queries = search_queries[:6]  # Cap at 6 distinct topics
+    
+    log_message_sync(f"[INFO] Fetching YouTube courses for: {search_queries}", step="synthesize")
+    youtube_courses = fetch_courses_for_skill_gaps(search_queries, max_per_skill=2)
+    youtube_courses_context = format_courses_for_llm(youtube_courses)
+    
+    log_message_sync(f"[INFO] Found YouTube courses for {len(youtube_courses)} skills", step="synthesize")
+    
     # Format live job data for the prompt
     live_jobs_context = ""
     for job in market_jobs[:5]:
@@ -204,10 +237,10 @@ def synthesize_roadmap(state: GraphState) -> GraphState:
         ("system", """You are an expert career coach and learning path architect. Your job is to create INTELLIGENT, PERSONALIZED learning roadmaps for job seekers.
 
 CRITICAL RULES:
-1. For ROADMAP: Use ONLY items marked as [COURSE] from the context. These are real NPTEL courses.
+1. For ROADMAP: Use ONLY the [YOUTUBE_COURSE] items provided below. These are REAL YouTube courses.
 2. For JOBS: Use the [LIVE_JOB] items from live market data.
 3. Generate exactly 6 skills for the SKILL RADAR comparing user proficiency vs market demand.
-4. Use the EXACT URLs and thumbnails from the context - never make up URLs.
+4. Use the EXACT URLs and thumbnails from the YouTube courses - NEVER make up URLs.
 5. Match score should reflect how the RESUME matches LIVE MARKET skill requirements.
 
 ROADMAP INTELLIGENCE RULES:
@@ -218,8 +251,8 @@ ROADMAP INTELLIGENCE RULES:
 - Consider what the TARGET ROLE requires and work backwards
 
 Always respond with valid JSON only, no markdown formatting."""),
-        ("human", """Context from our database:
-{retrieved_docs}
+        ("human", """AVAILABLE YOUTUBE COURSES (use these EXACT URLs and thumbnails):
+{youtube_courses_context}
 
 LIVE MARKET DATA:
 Top skills required in {role} jobs: {market_skills}
@@ -242,12 +275,13 @@ TASK - Create a PERSONALIZED learning roadmap:
    - userScore: How much evidence in the resume supports this skill (1-10)
    - marketScore: Always 10 (represents market demand)
    
-3. LEARNING ROADMAP (6 courses over 6 months):
-   - Order from FOUNDATION → INTERMEDIATE → ADVANCED
+3. LEARNING ROADMAP (EXACTLY 6 months - REQUIRED):
+   - You MUST generate content for all 6 months.
    - Month 1-2: Foundational skills (basics, prerequisites)
    - Month 3-4: Intermediate skills (tools, frameworks)
-   - Month 5-6: Advanced/Specialized skills
-   - EXPLAIN WHY each course is recommended
+   - Month 5-6: Advanced topics & CAPSTONE PROJECTS
+   - If you run out of unique gaps, suggest "Advanced [Skill]" or "Build [Skill] Project"
+   - EXPLAIN WHY each course is recommended - be specific about how it fills the user's gap
 
 4. MATCHED JOBS: Return top 3 jobs from [LIVE_JOB] items
 
@@ -319,7 +353,7 @@ Return ONLY valid JSON in this exact schema:
         logger.info(f"Synthesizing roadmap for role: {role} with {len(skill_gaps)} gaps and {len(market_skills)} market skills")
         
         result = chain.invoke({
-            "retrieved_docs": retrieved_docs,
+            "youtube_courses_context": youtube_courses_context,
             "skill_gaps": json.dumps(skill_gaps),
             "role": role,
             "market_skills": json.dumps(market_skills),
@@ -350,8 +384,16 @@ Return ONLY valid JSON in this exact schema:
             log_message_sync("[INFO] Generating fallback course recommendations...", step="synthesize")
             result["roadmap"] = generate_fallback_roadmap(skill_gaps)
         
-        if not result.get("recommended_jobs") or len(result.get("recommended_jobs", [])) == 0:
-            logger.warning("LLM returned empty jobs, adding fallback jobs")
+        # robust check for valid jobs
+        jobs = result.get("recommended_jobs", [])
+        is_invalid_jobs = (
+            not jobs or 
+            len(jobs) == 0 or 
+            (len(jobs) == 1 and "no jobs" in str(jobs[0].get("title", "")).lower())
+        )
+        
+        if is_invalid_jobs:
+            logger.warning("LLM returned empty or invalid jobs, adding fallback jobs")
             log_message_sync("[INFO] Generating fallback job recommendations...", step="synthesize")
             result["recommended_jobs"] = generate_fallback_jobs(role, skill_gaps)
         
@@ -389,85 +431,58 @@ Return ONLY valid JSON in this exact schema:
 
 
 def generate_fallback_roadmap(skill_gaps: List[str]) -> List[dict]:
-    """Generate fallback NPTEL course recommendations based on skill gaps"""
-    # Common NPTEL courses that cover many skills
-    nptel_courses = [
-        {
-            "skill": "Python Programming",
-            "course_title": "Programming, Data Structures and Algorithms Using Python",
-            "course_url": "https://www.youtube.com/playlist?list=PLJ5C_6qdAvBHYz8B2jZ1Xz9b-lZqL8RYH",
-            "thumbnail": "https://i.ytimg.com/vi/1FxCsoPRQVY/hqdefault.jpg",
-            "description": "NPTEL course covering Python fundamentals, data structures, and algorithms",
-        },
-        {
-            "skill": "Machine Learning",
-            "course_title": "Machine Learning - NPTEL",
-            "course_url": "https://www.youtube.com/playlist?list=PLJ5C_6qdAvBG2kj4D6X7KuQ-cZ6j9qSU3",
-            "thumbnail": "https://i.ytimg.com/vi/YOUTUBE_ML/hqdefault.jpg",
-            "description": "Comprehensive machine learning course from IIT",
-        },
-        {
-            "skill": "Data Structures",
-            "course_title": "Data Structures and Algorithms",
-            "course_url": "https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O",
-            "thumbnail": "https://i.ytimg.com/vi/0IAPZzGSbME/hqdefault.jpg",
-            "description": "Complete DSA course with practical implementations",
-        },
-        {
-            "skill": "Cloud Computing",
-            "course_title": "Cloud Computing - NPTEL",
-            "course_url": "https://www.youtube.com/playlist?list=PLJ5C_6qdAvBHBPQo_-YCe8fYCfHzH7Wgz",
-            "thumbnail": "https://i.ytimg.com/vi/cloud_thumb/hqdefault.jpg",
-            "description": "Introduction to cloud computing concepts including AWS, Azure, and GCP",
-        },
-        {
-            "skill": "DevOps",
-            "course_title": "DevOps and Software Engineering",
-            "course_url": "https://www.youtube.com/playlist?list=PLJ5C_6qdAvBHDevOps",
-            "thumbnail": "https://i.ytimg.com/vi/devops_thumb/hqdefault.jpg",
-            "description": "CI/CD pipelines, containerization, and deployment practices",
-        },
-        {
-            "skill": "Software Testing",
-            "course_title": "Software Testing - NPTEL",
-            "course_url": "https://www.youtube.com/playlist?list=PLJ5C_6qdAvBHTesting",
-            "thumbnail": "https://i.ytimg.com/vi/testing_thumb/hqdefault.jpg",
-            "description": "Software testing methodologies and best practices",
-        },
-    ]
+    """Generate fallback course recommendations using YouTube API or search URLs.
+    
+    This function is called when the LLM fails to generate a roadmap.
+    It fetches real YouTube courses or provides search URLs as fallback.
+    """
+    from youtube_courses import search_youtube_courses, generate_search_url_fallback
     
     roadmap = []
     month = 1
     
-    # Try to match skill gaps with available courses
-    for gap in skill_gaps[:6]:  # Max 6 months
-        matched_course = None
-        gap_lower = gap.lower()
+    # Fetch real YouTube courses for each skill gap
+    # Fetch real YouTube courses for each skill gap - Ensure 6 months
+    # We loop 6 times, cycling through gaps if needed but adding variety
+    
+    extended_gaps = skill_gaps[:]
+    while len(extended_gaps) < 6:
+        extended_gaps.extend([f"Advanced {g}" for g in skill_gaps])
+        extended_gaps.append("Capstone Project")
+    
+    for i in range(6):  # Exactly 6 months
+        query = extended_gaps[i] if i < len(extended_gaps) else skill_gaps[0]
         
-        for course in nptel_courses:
-            if course["skill"].lower() in gap_lower or gap_lower in course["skill"].lower():
-                matched_course = course
-                break
+        logger.info(f"Fallback: Fetching YouTube course for: {query}")
         
-        if matched_course:
+        # Try to get real YouTube courses
+        courses = search_youtube_courses(query, max_results=1)
+        
+        if courses and len(courses) > 0:
+            course = courses[0]
             roadmap.append({
                 "month": month,
-                "skill": gap,
-                "course_title": matched_course["course_title"],
-                "course_url": matched_course["course_url"],
-                "thumbnail": matched_course["thumbnail"],
-                "description": matched_course["description"],
+                "skill": query.replace("Advanced ", "").replace("Capstone Project", "Project"),
+                "priority": "foundation" if i < 2 else "intermediate" if i < 4 else "advanced",
+                "course_title": course["title"],
+                "course_url": course["url"],
+                "thumbnail": course["thumbnail"],
+                "description": course.get("description", f"Learn {query} through this course"),
+                "why_learn": f"We recommend this course to master {query}.",
                 "status": "Recommended"
             })
         else:
-            # Generic course for unmatched skills
+            # Use search URL as ultimate fallback
+            fallback = generate_search_url_fallback(query)
             roadmap.append({
                 "month": month,
-                "skill": gap,
-                "course_title": f"Learn {gap} - Online Course",
-                "course_url": f"https://www.youtube.com/results?search_query=NPTEL+{gap.replace(' ', '+')}",
-                "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg",
-                "description": f"Search for NPTEL courses on {gap}",
+                "skill": query,
+                "priority": "foundation" if i < 2 else "intermediate" if i < 4 else "advanced",
+                "course_title": fallback["title"],
+                "course_url": fallback["url"],
+                "thumbnail": fallback["thumbnail"],
+                "description": fallback["description"],
+                "why_learn": f"Search YouTube for {query} to find the best learning resources.",
                 "status": "Recommended"
             })
         month += 1
@@ -657,6 +672,10 @@ async def run_analysis_streaming(resume_text: str):
                     "course_url": item.get("course_url", ""),
                     "thumbnail": item.get("thumbnail", "https://i.ytimg.com/vi/default/hqdefault.jpg"),
                     "description": item.get("description", f"Learn {item.get('skill', 'this skill')}"),
+                    "why_learn": item.get("why_learn", "Crucial for your professional growth."),
+                    "priority": item.get("priority", "foundation"),
+                    "prerequisites": item.get("prerequisites", ""),
+                    "learning_outcome": item.get("learning_outcome", ""),
                     "status": item.get("status", "Recommended")
                 })
                 

@@ -10,3 +10,5 @@ chromadb>=0.4.22
 langgraph>=0.0.26
 pypdf>=4.0.1
 tiktoken>=0.6.0
+langchain-openai>=0.1.0
+google-api-python-client>=2.0.0

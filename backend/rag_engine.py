@@ -28,7 +28,8 @@ embeddings = OpenAIEmbeddings(
 
 def ingest_knowledge_base() -> None:
     """
-    Load courses and jobs data, convert to Documents, and store in ChromaDB.
+    Load jobs data and store in ChromaDB.
+    NOTE: Courses are now fetched dynamically from YouTube API, not from static JSON.
     Only ingests if the database is empty.
     """
     # Check if DB exists and is populated
@@ -38,39 +39,14 @@ def ingest_knowledge_base() -> None:
 
     # Resolve paths relative to script location
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    courses_path = os.path.join(script_dir, "data", "nptel_courses.json")
     jobs_path = os.path.join(script_dir, "data", "raw_jobs.json")
     db_path = os.path.join(script_dir, "chroma_db")
     
     documents: List[Document] = []
     
-    # Load courses
-    print("Loading courses data...")
-    try:
-        with open(courses_path, "r", encoding="utf-8") as f:
-            courses = json.load(f)
-        
-        for item in courses:
-            # Courses don't have description, use title as content
-            content = f"Course: {item.get('title', 'Unknown Course')}"
-            doc = Document(
-                page_content=content,
-                metadata={
-                    "type": "course",
-                    "id": item.get("id", ""),
-                    "title": item.get("title", ""),
-                    "url": item.get("url", ""),
-                    "thumbnail": item.get("thumbnail", ""),
-                    "video_count": item.get("video_count"),
-                    "channel": item.get("channel")
-                }
-            )
-            documents.append(doc)
-        print(f"Loaded {len(courses)} courses")
-    except FileNotFoundError:
-        print(f"Warning: Courses file not found at {courses_path}")
-    except json.JSONDecodeError as e:
-        print(f"Error parsing courses JSON: {e}")
+    # NOTE: Courses are now fetched from YouTube API dynamically in workflow.py
+    # The static nptel_courses.json file is no longer used
+    print("Courses: Using YouTube API (dynamic fetch)")
     
     # Load jobs
     print("Loading jobs data...")

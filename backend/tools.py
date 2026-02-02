@@ -1,6 +1,9 @@
 """
 LangGraph Tools for ResuMatch
 Defines tools for the AI agent to use
+
+NOTE: Courses are now fetched from YouTube API dynamically in workflow.py
+This module now focuses on job search from the RAG vector store.
 """
 
 from langchain_core.tools import Tool
@@ -9,7 +12,8 @@ from rag_engine import get_retriever
 
 def search_career_resources(query: str) -> str:
     """
-    Search for relevant NPTEL courses and Live Jobs matching specific skills.
+    Search for relevant Live Jobs matching specific skills from the vector store.
+    Courses are fetched from YouTube API separately.
     
     Args:
         query: The search query (skill or topic to search for)
