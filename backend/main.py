@@ -27,7 +27,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Import RAG engine and workflow
-from rag_engine import ingest_knowledge_base
+# Import RAG engine and workflow
 from workflow import app as langgraph_app, run_analysis_streaming
 import asyncio
 import json as json_module
@@ -39,12 +39,7 @@ async def lifespan(app):
     """Startup and shutdown events"""
     # Startup: Ingest knowledge base
     logger.info("Starting ResuMatch with LangGraph backend...")
-    logger.info("Ingesting knowledge base into vector DB...")
-    try:
-        ingest_knowledge_base()
-        logger.info("Knowledge base ingestion complete!")
-    except Exception as e:
-        logger.error(f"Failed to ingest knowledge base: {e}")
+    logger.info("Using Live API for Job Search (RAG Engine removed)")
     
     yield  # App runs here
     

@@ -7,48 +7,42 @@ This module now focuses on job search from the RAG vector store.
 """
 
 from langchain_core.tools import Tool
-from rag_engine import get_retriever
+from fetch_market import fetch_jobs_by_role
+import logging
 
+logger = logging.getLogger(__name__)
 
 def search_career_resources(query: str) -> str:
     """
-    Search for relevant Live Jobs matching specific skills from the vector store.
+    Search for relevant Live Jobs matching specific skills or roles using RemoteOK API.
     Courses are fetched from YouTube API separately.
     
     Args:
-        query: The search query (skill or topic to search for)
+        query: The search query (skill or role to search for, e.g. "Python Developer")
     
     Returns:
-        String containing relevant courses and jobs from the database
+        String containing relevant live jobs
     """
-    retriever = get_retriever()
-    docs = retriever.invoke(query)
+    logger.info(f"Tool searching for live jobs with query: {query}")
     
-    if not docs:
-        return "No relevant resources found."
+    # Fetch live jobs
+    result = fetch_jobs_by_role(query, max_jobs=5)
+    jobs = result.get('jobs', [])
     
-    results = []
-    for doc in docs:
-        content = doc.page_content
-        metadata = doc.metadata
-        doc_type = metadata.get("type", "unknown")
-        
-        if doc_type == "course":
-            course_info = f"""📚 [COURSE]
-   Title: {metadata.get('title', 'Unknown Course')}
-   URL: {metadata.get('url', '')}
-   Thumbnail: {metadata.get('thumbnail', '')}
-   Source: NPTEL (YouTube)"""
-            results.append(course_info)
-        elif doc_type == "job":
-            job_info = f"""💼 [JOB]
-   Title: {metadata.get('title', 'Unknown')}
-   Company: {metadata.get('company', 'Unknown')}
-   URL: {metadata.get('url', '')}
-   Skills: {metadata.get('tags', '')}"""
-            results.append(job_info)
-        else:
-            results.append(content)
+    if not jobs:
+        return f"No live jobs found for '{query}' at the moment."
+    
+    results = [f"Found {len(jobs)} live jobs for '{query}':"]
+    
+    for job in jobs:
+        job_info = f"""💼 [JOB]
+   Title: {job.get('title', 'Unknown')}
+   Company: {job.get('company', 'Unknown')}
+   URL: {job.get('url', '')}
+   Location: {job.get('location', 'Remote')}
+   Salary: {job.get('salary', 'Not specified')}
+   Description: {job.get('description', '')[:200]}..."""
+        results.append(job_info)
     
     return "\n\n".join(results)
 
@@ -56,7 +50,7 @@ def search_career_resources(query: str) -> str:
 # Create the tool
 career_resources_tool = Tool(
     name="search_career_resources",
-    description="Search for relevant NPTEL courses and Live Jobs matching specific skills.",
+    description="Search for relevant Live Jobs matching specific skills or roles.",
     func=search_career_resources
 )
 
