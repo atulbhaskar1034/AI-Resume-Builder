@@ -140,6 +140,7 @@ def search_youtube_courses(skill: str, max_results: int = 5) -> List[dict]:
 def fetch_courses_for_skill_gaps(skill_gaps: List[str], max_per_skill: int = 3) -> Dict[str, List[dict]]:
     """
     Fetch YouTube courses for multiple skill gaps.
+    Falls back to search URLs if API quota is exceeded.
     
     Args:
         skill_gaps: List of skills to find courses for
@@ -153,6 +154,12 @@ def fetch_courses_for_skill_gaps(skill_gaps: List[str], max_per_skill: int = 3) 
     for skill in skill_gaps:
         logger.info(f"Fetching YouTube courses for skill gap: {skill}")
         courses = search_youtube_courses(skill, max_results=max_per_skill)
+        
+        # If API failed or returned empty, use fallback search URLs
+        if not courses:
+            logger.info(f"Using fallback search URLs for: {skill}")
+            courses = [generate_search_url_fallback(skill)]
+        
         courses_by_skill[skill] = courses
     
     total_courses = sum(len(courses) for courses in courses_by_skill.values())

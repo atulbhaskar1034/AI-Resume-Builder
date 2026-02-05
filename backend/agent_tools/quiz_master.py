@@ -1,14 +1,17 @@
 
 from langchain_core.tools import Tool
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
+from dotenv import load_dotenv
 import os
 import json
 
-# Initialize LLM
-llm = ChatOpenAI(
-    model="google/gemini-2.0-flash-001",
-    base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENAI_API_KEY"),
+# Load environment variables
+load_dotenv()
+
+# Initialize LLM with Groq
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
+    api_key=os.getenv("GROQ_API_KEY"),
     temperature=0.7
 )
 

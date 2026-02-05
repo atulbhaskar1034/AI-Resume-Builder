@@ -1,10 +1,15 @@
 {
   "framework": "nextjs",
-  "env": {
-    "NEXT_PUBLIC_API_URL": "https://resumatch-backend-225a388bc6b3.herokuapp.com"
-  },
   "redirects": [
-    { "source": "/analyse", "destination": "/analyze", "permanent": true },
-    { "source": "/analysis", "destination": "/analyze", "permanent": true }
+    {
+      "source": "/analyse",
+      "destination": "/analyze",
+      "permanent": true
+    },
+    {
+      "source": "/analysis",
+      "destination": "/analyze",
+      "permanent": true
+    }
   ]
 }

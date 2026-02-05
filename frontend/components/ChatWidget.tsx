@@ -48,18 +48,51 @@ interface QuizQuestion {
 const CONVERSATIONS_KEY = 'resumatch_conversations';
 const CURRENT_CONV_KEY = 'resumatch_current_conversation';
 
-// Extract JSON helper
+// Extract JSON helper (Robust)
 const extractJSON = (text: string): { type: 'project' | 'quiz' | null; data: any; cleanText: string } => {
-    const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/);
-    if (jsonMatch) {
+    // 1. Try standard markdown code blocks
+    let match = text.match(/```json\s*([\s\S]*?)\s*```/);
+    if (!match) match = text.match(/```\s*([\s\S]*?)\s*```/);
+
+    let jsonStr = match ? match[1] : null;
+    let matchText = match ? match[0] : null;
+
+    // 2. Fallback: Try to find raw JSON array for Quiz
+    if (!jsonStr) {
+        const arrayMatch = text.match(/(\[\s*\{[\s\S]*?"question"[\s\S]*?\}\s*\])/);
+        if (arrayMatch) {
+            jsonStr = arrayMatch[1];
+            matchText = arrayMatch[0];
+        }
+    }
+
+    // 3. Fallback: Try to find raw JSON object for Project
+    if (!jsonStr) {
+        const objMatch = text.match(/(\{\s*"title"[\s\S]*?"tech_stack"[\s\S]*?\})/);
+        if (objMatch) {
+            jsonStr = objMatch[1];
+            matchText = objMatch[0];
+        }
+    }
+
+    if (jsonStr && matchText) {
         try {
-            const parsed = JSON.parse(jsonMatch[1]);
-            const cleanText = text.replace(/```json[\s\S]*?```/, '').trim();
+            const parsed = JSON.parse(jsonStr);
+            // Remove the JSON string from the display text
+            let cleanText = text.replace(matchText, '').trim();
+            // Also cleanup any remaining tags like [QUIZ:...] or [PROJECT:...]
+            cleanText = cleanText.replace(/\[(QUIZ|PROJECT):.*?\]/g, '');
+
             if (parsed.title && parsed.tech_stack && parsed.steps) return { type: 'project', data: parsed, cleanText };
             if (Array.isArray(parsed) && parsed[0]?.question) return { type: 'quiz', data: parsed, cleanText };
-        } catch (e) { }
+        } catch (e) {
+            console.error("JSON Parse Error:", e);
+        }
     }
-    return { type: null, data: null, cleanText: text };
+
+    // Cleanup tags even if no JSON found
+    const cleanText = text.replace(/\[(QUIZ|PROJECT):.*?\]/g, '').trim();
+    return { type: null, data: null, cleanText };
 };
 
 // Project Card - Light Theme with Orange

@@ -49,12 +49,12 @@ class GraphState(TypedDict):
 # LLM Setup - Using xAI Grok API
 # =============================================================================
 
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 
-llm = ChatOpenAI(
-    model="google/gemini-2.0-flash-001",
-    base_url="https://openrouter.ai/api/v1",
-    api_key=os.getenv("OPENAI_API_KEY"),
+# Use Groq API (FREE tier available)
+llm = ChatGroq(
+    model="llama-3.3-70b-versatile",
+    api_key=os.getenv("GROQ_API_KEY"),
     temperature=0.3
 )
 
@@ -352,14 +352,35 @@ Return ONLY valid JSON in this exact schema:
         
         logger.info(f"Synthesizing roadmap for role: {role} with {len(skill_gaps)} gaps and {len(market_skills)} market skills")
         
-        result = chain.invoke({
-            "youtube_courses_context": youtube_courses_context,
-            "skill_gaps": json.dumps(skill_gaps),
-            "role": role,
-            "market_skills": json.dumps(market_skills),
-            "live_jobs_context": live_jobs_context,
-            "resume_text": resume_text[:3000]  # Limit to avoid token limits
-        })
+        import time
+        max_retries = 3
+        result = None
+        
+        for attempt in range(max_retries):
+            try:
+                result = chain.invoke({
+                    "youtube_courses_context": youtube_courses_context,
+                    "skill_gaps": json.dumps(skill_gaps),
+                    "role": role,
+                    "market_skills": json.dumps(market_skills),
+                    "live_jobs_context": live_jobs_context,
+                    "resume_text": resume_text[:3000]  # Limit to avoid token limits
+                })
+                break # Success
+            except Exception as e:
+                error_str = str(e).lower()
+                if "429" in error_str or "rate" in error_str:
+                    wait_time = (2 ** attempt) * 2  # 2, 4, 8 seconds
+                    log_message_sync(f"[WARN] API Rate Limit hit. Retrying in {wait_time}s...", step="synthesize")
+                    logger.warning(f"Rate limit hit: {e}. Retrying in {wait_time}s")
+                    time.sleep(wait_time)
+                elif attempt == max_retries - 1:
+                    raise e # Re-raise if it's the last attempt
+                else:
+                    raise e # Re-raise other errors immediately
+        
+        if not result:
+            raise Exception("Failed to generate roadmap after retries")
         
         with open("debug_explicit.txt", "a", encoding="utf-8") as f:
             f.write(f"LLM Result Raw: {result}\n")

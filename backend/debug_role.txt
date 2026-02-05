@@ -72,3 +72,1393 @@ role_detected in payload: AI Engineer/Data Scientist
 match_score in payload: 50.0
 FULL JSON STRING:
 {"type": "result", "payload": {"status": "success", "role_detected": "AI Engineer/Data Scientist", "match_score": 50.0, "match_score_reasoning": "User has 6 of 12 market-demanded skills: ['Git', 'Python', 'Api', 'Linux', 'Agile', 'Analytics']", "skill_radar": [{"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Git", "userScore": 7, "marketScore": 10}, {"skill": "Api", "userScore": 7, "marketScore": 10}, {"skill": "Analytics", "userScore": 6, "marketScore": 10}, {"skill": "Linux",...
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 11:43:59.618423 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Python for Beginners (Full Course) | Programming Tutorial", "course_url": "https://www.youtube.com/playlist?list=PLsyeobzWxl7poL9JTVyndKe62ieoN-MZ3", "thumbnail": "https://i.ytimg.com/vi/QXeEoD0pB3E/hqdefault.jpg", "description": "Python Tutorial, Easy Python tutorial for beginner,...
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+
+--- FETCH JOBS START System Design Software Engineer ---
+
+--- FETCH JOBS START Software Engineer ---
+
+--- FETCH JOBS START Python Software Engineer ---
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+
+--- FETCH JOBS START System Design Software Engineer ---
+
+--- FETCH JOBS START Python Software Engineer ---
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+
+--- FETCH JOBS START System Design Software Engineer ---
+
+--- FETCH JOBS START Software Engineer ---
+
+--- FETCH JOBS START Software Engineer ---
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:19:32.600834 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Search YouTube for Python courses", "course_url": "https://www.youtube.com/results?search_query=Python+tutorial+course", "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg", "description": "Find the best Python courses on YouTube", "why_learn": "Search YouTube for Python to...
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:19:32.703099 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Search YouTube for Python courses", "course_url": "https://www.youtube.com/results?search_query=Python+tutorial+course", "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg", "description": "Find the best Python courses on YouTube", "why_learn": "Search YouTube for Python to...
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:23:52.872402 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Python Language Full Course (2025-26)", "course_url": "https://www.youtube.com/playlist?list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0", "thumbnail": "https://i.ytimg.com/vi/t2_Q2BRzeEE/hqdefault.jpg", "description": "", "why_learn": "We recommend this course to master Python.", "priority...
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:27:48.268174 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Python for Beginners (Full Course) | #100DaysOfCode Programming Tutorial in Hindi", "course_url": "https://www.youtube.com/playlist?list=PLu0W_9lII9agwh1XjRt242xIpHhPT2llg", "thumbnail": "https://i.ytimg.com/vi/7wnove7K-ZQ/hqdefault.jpg", "description": "Python is one of the most d...
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:27:48.379292 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Python Language Full Course (2025-26)", "course_url": "https://www.youtube.com/playlist?list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0", "thumbnail": "https://i.ytimg.com/vi/t2_Q2BRzeEE/hqdefault.jpg", "description": "", "why_learn": "We recommend this course to master Python.", "priority...
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:34:36.013489 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Search YouTube for Python courses", "course_url": "https://www.youtube.com/results?search_query=Python+tutorial+course", "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg", "description": "Find the best Python courses on YouTube", "why_learn": "Search YouTube for Python to...
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:35:25.836140 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Search YouTube for Python courses", "course_url": "https://www.youtube.com/results?search_query=Python+tutorial+course", "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg", "description": "Find the best Python courses on YouTube", "why_learn": "Search YouTube for Python to...
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:35:25.948461 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Search YouTube for Python courses", "course_url": "https://www.youtube.com/results?search_query=Python+tutorial+course", "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg", "description": "Find the best Python courses on YouTube", "why_learn": "Search YouTube for Python to...
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:48:55.121883 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Search YouTube for Python courses", "course_url": "https://www.youtube.com/results?search_query=Python+tutorial+course", "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg", "description": "Find the best Python courses on YouTube", "why_learn": "Search YouTube for Python to...
+
+
+--- SSE ROLE DEBUG 2026-02-05 12:48:55.226956 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Search YouTube for Python courses", "course_url": "https://www.youtube.com/results?search_query=Python+tutorial+course", "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg", "description": "Find the best Python courses on YouTube", "why_learn": "Search YouTube for Python to...
+
+--- FETCH JOBS START Cloud Computing AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Job 27268 Mid level DDL DML Developer Brazil Score: 13.0
+
+--- FETCH JOBS START DevOps AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Job 27268 Mid level DDL DML Developer Brazil Score: 12.0
+
+--- FETCH JOBS START Cyber Security AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['cyber', 'security', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Sales Engineer Data & AI Security Score: 20.1
+
+--- FETCH JOBS START Cloud Computing Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START DevOps Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START Data Visualization Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'visualization', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 21.1
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Reliability Engineer for AI Score: 11.1
+
+--- FETCH JOBS START Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 13:05:26.690454 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 27.27
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 27.27, "match_score_reasoning": "User has 3 of 11 market-demanded skills: [\"Python\", \"Sql\", \"Git\"]", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Sql", "userScore": 6, "marketScore": 10}, {"skill": "Git", "userScore": 5, "marketScore": 10}, {"skill": "Api", "userScore": 2, "marketScore": 10}, {"skill": "Aws", "userScore": 1, "marketScore": 10}, {"skill...
+
+
+--- SSE ROLE DEBUG 2026-02-05 13:05:26.789202 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Machine Learning Engineer
+current_state role: Machine Learning Engineer
+Final role being used: Machine Learning Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Machine Learning Engineer
+match_score in payload: 27.27
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Machine Learning Engineer", "match_score": 27.27, "match_score_reasoning": "User has 3 of 11 market-demanded skills: [\"Git\", \"Linux\", \"Machine Learning\", \"Python\"]", "skill_radar": [{"skill": "Machine Learning", "userScore": 8, "marketScore": 10}, {"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Git", "userScore": 6, "marketScore": 10}, {"skill": "Linux", "userScore": 5, "marketScore": 10}, {"skill": ...
+
+--- FETCH JOBS START Cloud Computing Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 22.0
+
+--- FETCH JOBS START DevOps Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 22.0
+
+--- FETCH JOBS START Data Visualization Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'visualization', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 32.0
+
+--- FETCH JOBS START Cloud Computing Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START DevOps Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START Data Visualization Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'visualization', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 21.1
+
+--- FETCH JOBS START Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: NFL Data Scientist Score: 22.0
+
+--- FETCH JOBS START Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 13:15:31.880801 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Data Scientist/Machine Learning Engineer
+current_state role: Data Scientist/Machine Learning Engineer
+Final role being used: Data Scientist/Machine Learning Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Data Scientist/Machine Learning Engineer
+match_score in payload: 45.45
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Data Scientist/Machine Learning Engineer", "match_score": 45.45, "match_score_reasoning": "User has 5 of 11 market-demanded skills: ['Python', 'Sql', 'Machine Learning', 'Git', 'Analytics']", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Machine Learning", "userScore": 9, "marketScore": 10}, {"skill": "Sql", "userScore": 6, "marketScore": 10}, {"skill": "Analytics", "userScore": 7, "marketS...
+
+
+--- SSE ROLE DEBUG 2026-02-05 13:15:31.994703 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Machine Learning Engineer
+current_state role: Machine Learning Engineer
+Final role being used: Machine Learning Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Machine Learning Engineer
+match_score in payload: 27.27
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Machine Learning Engineer", "match_score": 27.27, "match_score_reasoning": "User has 3 of 12 market-demanded skills: [\"Machine Learning\", \"Python\", \"Git\"]", "skill_radar": [{"skill": "Machine Learning", "userScore": 8, "marketScore": 10}, {"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Git", "userScore": 6, "marketScore": 10}, {"skill": "Linux", "userScore": 2, "marketScore": 10}, {"skill": "Api", "use...
+
+--- FETCH JOBS START Data Analysis Metallurgical Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'analysis', 'metallurgical', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Data Analyst Score: 11.0
+
+--- FETCH JOBS START Machine Learning Metallurgical Engineer ---
+API Response received: 95 items
+Keywords: ['machine', 'learning', 'metallurgical', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START Project Management Metallurgical Engineer ---
+API Response received: 95 items
+Keywords: ['project', 'management', 'metallurgical', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Manager Web Project Management Score: 20.0
+
+--- FETCH JOBS START Data Analysis and Visualization Metallurgy and Materials Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'analysis', 'and', 'visualization', 'metallurgy', 'and', 'materials', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: SMM & Brand Communications Manager Score: 21.0
+
+--- FETCH JOBS START Machine Learning and Artificial Intelligence Metallurgy and Materials Engineer ---
+API Response received: 95 items
+Keywords: ['machine', 'learning', 'and', 'artificial', 'intelligence', 'metallurgy', 'and', 'materials', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 24.1
+
+--- FETCH JOBS START Project Management and Coordination Metallurgy and Materials Engineer ---
+API Response received: 95 items
+Keywords: ['project', 'management', 'and', 'coordination', 'metallurgy', 'and', 'materials', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Manager Web Project Management Score: 23.0
+
+--- FETCH JOBS START Metallurgical Engineer ---
+API Response received: 95 items
+Keywords: ['metallurgical', 'engineer']
+Matched Jobs after Generic Filter: 0
+
+--- FETCH JOBS START Metallurgy and Materials Engineer ---
+API Response received: 95 items
+Keywords: ['metallurgy', 'and', 'materials', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: SMM & Brand Communications Manager Score: 10.0
+
+
+--- SSE ROLE DEBUG 2026-02-05 13:22:02.901634 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgical Engineer
+current_state role: Metallurgical Engineer
+Final role being used: Metallurgical Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgical Engineer
+match_score in payload: 66.67
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Metallurgical Engineer", "match_score": 66.67, "match_score_reasoning": "User has 4 of 6 market-demanded skills: Technical Knowledge, Problem Solving, Project Management, Communication", "skill_radar": [{"skill": "Technical Knowledge", "userScore": 8, "marketScore": 10}, {"skill": "Problem Solving", "userScore": 7, "marketScore": 10}, {"skill": "Project Management", "userScore": 6, "marketScore": 10}, {"skill": "Communication"...
+
+
+--- SSE ROLE DEBUG 2026-02-05 13:22:03.006224 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Metallurgy and Materials Engineer
+current_state role: Metallurgy and Materials Engineer
+Final role being used: Metallurgy and Materials Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Metallurgy and Materials Engineer
+match_score in payload: 8.33
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Metallurgy and Materials Engineer", "match_score": 8.33, "match_score_reasoning": "User has 1 of 12 market-demanded skills: [Python]", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Materials", "userScore": 6, "marketScore": 10}, {"skill": "Linux", "userScore": 2, "marketScore": 10}, {"skill": "Java", "userScore": 1, "marketScore": 10}, {"skill": "Sql", "userScore": 1, "marketScore": 10}, {"...
+
+--- FETCH JOBS START Machine Learning Engineering Software Engineer ---
+API Response received: 95 items
+Keywords: ['machine', 'learning', 'engineering', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 21.1
+
+--- FETCH JOBS START Cloud Security Software Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'security', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Sr Security Engineer Score: 12.1
+
+--- FETCH JOBS START Data Science Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'science', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 12.1
+
+--- FETCH JOBS START Machine Learning Engineering Software Engineer ---
+API Response received: 95 items
+Keywords: ['machine', 'learning', 'engineering', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 21.1
+
+--- FETCH JOBS START Cloud Security Software Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'security', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Sr Security Engineer Score: 12.1
+
+--- FETCH JOBS START Data Science Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'science', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 12.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Development Engineer Test Brazil Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 13:34:56.137644 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Software Engineer
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 45
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 45, "match_score_reasoning": "User has 6 of 12 market-demanded skills: [\"Python\", \"Api\", \"Rest\", \"Sql\", \"Git\", \"Analytics\"]", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Api", "userScore": 7, "marketScore": 10}, {"skill": "Rest", "userScore": 7, "marketScore": 10}, {"skill": "Sql", "userScore": 6, "marketScore": 10}, {"skill": "Git", "userSco...
+
+
+--- SSE ROLE DEBUG 2026-02-05 13:34:56.245666 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Software Engineer
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 45
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 45, "match_score_reasoning": "User has 7 of 12 market-demanded skills: ['Python', 'Api', 'Rest', 'Sql', 'Git', 'React', 'Analytics']", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Api", "userScore": 6, "marketScore": 10}, {"skill": "Rest", "userScore": 6, "marketScore": 10}, {"skill": "Sql", "userScore": 7, "marketScore": 10}, {"skill": "Git", "userScore"...
+
+--- FETCH JOBS START Aerospace Engineering NASA Engineer ---
+API Response received: 95 items
+Keywords: ['aerospace', 'engineering', 'nasa', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Head of Customer Success Engineering Score: 10.1
+
+--- FETCH JOBS START Robotics NASA Engineer ---
+API Response received: 95 items
+Keywords: ['robotics', 'nasa', 'engineer']
+Matched Jobs after Generic Filter: 1
+Top Match: Manager Technical Writing Score: 1.0
+
+--- FETCH JOBS START Data Analysis for Space Exploration NASA Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'analysis', 'for', 'space', 'exploration', 'nasa', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Social Media Analyst Platform Score: 13.0
+
+--- FETCH JOBS START Aerospace Engineering NASA Engineer ---
+API Response received: 95 items
+Keywords: ['aerospace', 'engineering', 'nasa', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Head of Customer Success Engineering Score: 10.1
+
+--- FETCH JOBS START Robotics NASA Engineer ---
+API Response received: 95 items
+Keywords: ['robotics', 'nasa', 'engineer']
+Matched Jobs after Generic Filter: 1
+Top Match: Manager Technical Writing Score: 1.0
+
+--- FETCH JOBS START Data Analysis for Space Exploration NASA Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'analysis', 'for', 'space', 'exploration', 'nasa', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Social Media Analyst Platform Score: 13.0
+
+--- FETCH JOBS START Cloud Computing Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START DevOps Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START Data Visualization Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'visualization', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 21.1
+
+--- FETCH JOBS START Cloud Computing Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START DevOps Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START Data Visualization Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'visualization', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 21.1
+
+--- FETCH JOBS START Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+--- FETCH JOBS START Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 20.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 15:21:50.539399 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Machine Learning Engineer
+current_state role: Machine Learning Engineer
+Final role being used: Machine Learning Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Machine Learning Engineer
+match_score in payload: 36.36
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Machine Learning Engineer", "match_score": 36.36, "match_score_reasoning": "User has 4 of 11 market-demanded skills: [\"Git\", \"Linux\", \"Machine Learning\", \"Python\"]", "skill_radar": [{"skill": "Machine Learning", "userScore": 8, "marketScore": 10}, {"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Git", "userScore": 6, "marketScore": 10}, {"skill": "Linux", "userScore": 5, "marketScore": 10}, {"skill": ...
+
+
+--- SSE ROLE DEBUG 2026-02-05 15:21:50.644879 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Machine Learning Engineer
+current_state role: Machine Learning Engineer
+Final role being used: Machine Learning Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Machine Learning Engineer
+match_score in payload: 45
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Machine Learning Engineer", "match_score": 45, "match_score_reasoning": "User has 5 of 12 market-demanded skills: [\"Git\", \"Linux\", \"Machine Learning\", \"Python\", \"Analytics\"]", "skill_radar": [{"skill": "Machine Learning", "userScore": 8, "marketScore": 10}, {"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Git", "userScore": 6, "marketScore": 10}, {"skill": "Linux", "userScore": 5, "marketScore": 10}...
+
+--- FETCH JOBS START Cloud Computing AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Job 27268 Mid level DDL DML Developer Brazil Score: 13.0
+
+--- FETCH JOBS START DevOps AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Job 27268 Mid level DDL DML Developer Brazil Score: 12.0
+
+--- FETCH JOBS START Cyber Security AI/ML Engineer ---
+
+--- FETCH JOBS START Cloud Computing Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 22.0
+
+--- FETCH JOBS START DevOps Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 22.0
+
+--- FETCH JOBS START Data Visualization Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'visualization', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 32.0
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Reliability Engineer for AI Score: 11.1
+
+--- FETCH JOBS START Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: NFL Data Scientist Score: 22.0
+
+
+--- SSE ROLE DEBUG 2026-02-05 15:46:23.020542 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 27
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 27, "match_score_reasoning": "User has 3 of 12 market-demanded skills: [\"Python\", \"Sql\", \"Api\"]", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Sql", "userScore": 6, "marketScore": 10}, {"skill": "Api", "userScore": 5, "marketScore": 10}, {"skill": "Fea", "userScore": 2, "marketScore": 10}, {"skill": "Go", "userScore": 1, "marketScore": 10}, {"skill": "...
+
+
+--- SSE ROLE DEBUG 2026-02-05 15:46:23.129017 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Data Scientist/Machine Learning Engineer
+current_state role: Data Scientist/Machine Learning Engineer
+Final role being used: Data Scientist/Machine Learning Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Data Scientist/Machine Learning Engineer
+match_score in payload: 41.67
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Data Scientist/Machine Learning Engineer", "match_score": 41.67, "match_score_reasoning": "User has 5 of 12 market-demanded skills: ['Git', 'Analytics', 'Sql', 'Python', 'Machine Learning']", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Machine Learning", "userScore": 9, "marketScore": 10}, {"skill": "Sql", "userScore": 6, "marketScore": 10}, {"skill": "Analytics", "userScore": 7, "marketS...
+
+--- FETCH JOBS START Cloud Computing Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START DevOps Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START Cyber Security Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['cyber', 'security', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Sales Engineer Data & AI Security Score: 30.1
+
+--- FETCH JOBS START Cloud Computing Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START DevOps Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START Cyber Security Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['cyber', 'security', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Sales Engineer Data & AI Security Score: 30.1
+
+--- FETCH JOBS START Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: NFL Data Scientist Score: 21.0
+
+
+--- SSE ROLE DEBUG 2026-02-05 16:10:21.455203 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Data Scientist/AI Engineer
+current_state role: Data Scientist/AI Engineer
+Final role being used: Data Scientist/AI Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Data Scientist/AI Engineer
+match_score in payload: 25
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Data Scientist/AI Engineer", "match_score": 25, "match_score_reasoning": "User has 3 of 12 market-demanded skills: [\"Python\", \"Sql\", \"Api\"]", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Analytics", "userScore": 6, "marketScore": 10}, {"skill": "Linux", "userScore": 2, "marketScore": 10}, {"skill": "Api", "userScore": 5, "marketScore": 10}, {"skill": "Sql", "userScore": 4, "marketSco...
+
+
+--- SSE ROLE DEBUG 2026-02-05 16:10:21.561604 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Data Scientist/AI Engineer
+current_state role: Data Scientist/AI Engineer
+Final role being used: Data Scientist/AI Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Data Scientist/AI Engineer
+match_score in payload: 41.67
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Data Scientist/AI Engineer", "match_score": 41.67, "match_score_reasoning": "User has 5 of 12 market-demanded skills: [\"Python\", \"Git\", \"Analytics\", \"Sql\", \"Api\"]", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Git", "userScore": 6, "marketScore": 10}, {"skill": "Analytics", "userScore": 7, "marketScore": 10}, {"skill": "Sql", "userScore": 5, "marketScore": 10}, {"skill": "Api", "...
+
+--- FETCH JOBS START Cloud Computing AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Job 27268 Mid level DDL DML Developer Brazil Score: 13.0
+
+--- FETCH JOBS START DevOps AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Job 27268 Mid level DDL DML Developer Brazil Score: 12.0
+
+--- FETCH JOBS START Cyber Security AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['cyber', 'security', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Sales Engineer Data & AI Security Score: 20.1
+
+--- FETCH JOBS START Cloud Computing Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START DevOps Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START Data Visualization Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'visualization', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 31.0
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Reliability Engineer for AI Score: 11.1
+
+--- FETCH JOBS START Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: NFL Data Scientist Score: 21.0
+
+
+--- SSE ROLE DEBUG 2026-02-05 16:46:15.844707 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: AI/ML Engineer
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 36.36
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 36.36, "match_score_reasoning": "User has 4 of 11 market-demanded skills: ['Python', 'Sql', 'Git', 'Api']", "skill_radar": [{"skill": "Python", "userScore": 9, "marketScore": 10}, {"skill": "Sql", "userScore": 8, "marketScore": 10}, {"skill": "Git", "userScore": 7, "marketScore": 10}, {"skill": "Api", "userScore": 6, "marketScore": 10}, {"skill": "Aws", "userScore": 2, "marketScore": 10}, {"skil...
+
+
+--- SSE ROLE DEBUG 2026-02-05 16:46:15.942183 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Data Scientist/AI Engineer
+Final role being used: Data Scientist/AI Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Data Scientist/AI Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Data Scientist/AI Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Cloud Computing", "course_title": "Cloud Computing (Complete Course)", "course_url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiHRHVUtR-O52MsrdUSrzuy4", "thumbnail": "https://i.ytimg.com/vi/dmGybCohHsw/hqdefault.jpg", "description": "\"Master Cloud Computing: From Basics to Advanced | Compl...
+
+--- FETCH JOBS START Cloud Computing Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 22.0
+
+--- FETCH JOBS START DevOps Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 22.0
+
+--- FETCH JOBS START Data Visualization Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'visualization', 'data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 32.0
+
+--- FETCH JOBS START Cloud Computing AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Job 27268 Mid level DDL DML Developer Brazil Score: 13.0
+
+--- FETCH JOBS START DevOps AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Job 27268 Mid level DDL DML Developer Brazil Score: 12.0
+
+--- FETCH JOBS START Cyber Security AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['cyber', 'security', 'ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Sales Engineer Data & AI Security Score: 20.1
+
+--- FETCH JOBS START Data Scientist/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'scientist', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: NFL Data Scientist Score: 22.0
+
+--- FETCH JOBS START AI/ML Engineer ---
+API Response received: 95 items
+Keywords: ['ai', 'ml', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Software Reliability Engineer for AI Score: 11.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 16:47:34.894329 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Data Scientist/Machine Learning Engineer
+Final role being used: Data Scientist/Machine Learning Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Data Scientist/Machine Learning Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Data Scientist/Machine Learning Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Cloud Computing", "course_title": "Cloud Computing (Complete Course)", "course_url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiHRHVUtR-O52MsrdUSrzuy4", "thumbnail": "https://i.ytimg.com/vi/dmGybCohHsw/hqdefault.jpg", "description": "\"Master Cloud Computing: From Basics to Ad...
+
+
+--- SSE ROLE DEBUG 2026-02-05 16:47:34.999955 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: AI/ML Engineer
+Final role being used: AI/ML Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: AI/ML Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "AI/ML Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Cloud Computing", "course_title": "Cloud Computing (Complete Course)", "course_url": "https://www.youtube.com/playlist?list=PLxCzCOWd7aiHRHVUtR-O52MsrdUSrzuy4", "thumbnail": "https://i.ytimg.com/vi/dmGybCohHsw/hqdefault.jpg", "description": "\"Master Cloud Computing: From Basics to Advanced | Complete Cloud Co...
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Python Software Engineer ---
+API Response received: 95 items
+Keywords: ['python', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Python Software Engineer Score: 20.1
+
+--- FETCH JOBS START Data Structures Software Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'structures', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Software Engineer Intern Score: 12.1
+
+--- FETCH JOBS START System Design Software Engineer ---
+API Response received: 95 items
+Keywords: ['system', 'design', 'software', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Product Designer II Design Systems Score: 20.0
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Staff Software Engineer Distributed Simulation Score: 10.1
+
+--- FETCH JOBS START Software Engineer ---
+API Response received: 95 items
+Keywords: ['software', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Staff Software Engineer Distributed Simulation Score: 10.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 16:51:12.877039 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Python Language Full Course (2025-26)", "course_url": "https://www.youtube.com/playlist?list=PLGjplNEQ1it8-0CmoljS5yeV-GlKSUEt0", "thumbnail": "https://i.ytimg.com/vi/t2_Q2BRzeEE/hqdefault.jpg", "description": "", "why_learn": "We recommend this course to master Python.", "priority...
+
+
+--- SSE ROLE DEBUG 2026-02-05 16:51:12.974597 ---
+final_result keys: ['match_score', 'heatmap', 'roadmap', 'recommended_jobs', 'error']
+detected_role from final_result: NOT FOUND
+current_state role: Software Engineer
+Final role being used: Software Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Software Engineer
+match_score in payload: 50
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Software Engineer", "match_score": 50, "match_score_reasoning": "", "skill_radar": [], "roadmap": [{"month": 1, "skill": "Python", "course_title": "Search YouTube for Python courses", "course_url": "https://www.youtube.com/results?search_query=Python+tutorial+course", "thumbnail": "https://i.ytimg.com/vi/default/hqdefault.jpg", "description": "Find the best Python courses on YouTube", "why_learn": "Search YouTube for Python to...
+
+--- FETCH JOBS START Cloud Computing Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START DevOps Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START Cyber Security Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['cyber', 'security', 'data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Sales Engineer Data & AI Security Score: 30.1
+
+--- FETCH JOBS START Cloud Computing Artificial Intelligence/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cloud', 'computing', 'artificial', 'intelligence', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 22.1
+
+--- FETCH JOBS START DevOps Artificial Intelligence/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['devops', 'artificial', 'intelligence', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 22.1
+
+--- FETCH JOBS START Cyber Security Artificial Intelligence/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['cyber', 'security', 'artificial', 'intelligence', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 5
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 22.1
+
+--- FETCH JOBS START Data Scientist/AI Engineer ---
+API Response received: 95 items
+Keywords: ['data', 'scientist', 'ai', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: NFL Data Scientist Score: 21.0
+
+--- FETCH JOBS START Artificial Intelligence/Machine Learning Engineer ---
+API Response received: 95 items
+Keywords: ['artificial', 'intelligence', 'machine', 'learning', 'engineer']
+Matched Jobs after Generic Filter: 15
+Top Match: Senior Machine Learning Engineer AI Foundry Score: 22.1
+
+
+--- SSE ROLE DEBUG 2026-02-05 17:02:16.494515 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Data Scientist/AI Engineer
+current_state role: Data Scientist/AI Engineer
+Final role being used: Data Scientist/AI Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Data Scientist/AI Engineer
+match_score in payload: 25
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Data Scientist/AI Engineer", "match_score": 25, "match_score_reasoning": "User has 3 of 12 market-demanded skills: [\"Python\", \"Git\", \"Analytics\"]", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Analytics", "userScore": 6, "marketScore": 10}, {"skill": "Git", "userScore": 5, "marketScore": 10}, {"skill": "Linux", "userScore": 2, "marketScore": 10}, {"skill": "Api", "userScore": 1, "mar...
+
+
+--- SSE ROLE DEBUG 2026-02-05 17:02:16.596619 ---
+final_result keys: ['detected_role', 'match_score', 'match_score_reasoning', 'skill_radar', 'roadmap', 'recommended_jobs']
+detected_role from final_result: Artificial Intelligence/Machine Learning Engineer
+current_state role: Artificial Intelligence/Machine Learning Engineer
+Final role being used: Artificial Intelligence/Machine Learning Engineer
+
+--- SSE RESPONSE PAYLOAD ---
+role_detected in payload: Artificial Intelligence/Machine Learning Engineer
+match_score in payload: 27
+FULL JSON STRING:
+{"type": "result", "payload": {"status": "success", "role_detected": "Artificial Intelligence/Machine Learning Engineer", "match_score": 27, "match_score_reasoning": "User has 3 of 12 market-demanded skills: [\"Python\", \"Git\", \"Machine Learning\"]", "skill_radar": [{"skill": "Python", "userScore": 8, "marketScore": 10}, {"skill": "Machine Learning", "userScore": 9, "marketScore": 10}, {"skill": "Git", "userScore": 6, "marketScore": 10}, {"skill": "Azure", "userScore": 2, "marketScore": 10}, ...
